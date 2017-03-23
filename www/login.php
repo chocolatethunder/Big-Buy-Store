@@ -4,6 +4,16 @@
 include ("inc/classload.inc.php");
 
 // Process Login
+if (login::loginCheck() == true) {
+	login::logout();
+}
+
+if (isset($_POST["login"])) {			
+	$error = array();	
+	if ($securityCheck->checkForm($_POST["form"]) == true) {		
+		$login = new login($db, $_POST["uname"], $_POST["pass"]);		
+	}
+}
 
 // Include header template
 include ("inc/header.inc.php");
@@ -23,7 +33,7 @@ include ("inc/header.inc.php");
 		
 	<form action="login.php" method="post" id="nonauthform">  
 
-		<input type="hidden" name="token" value="<?php //echo $session->generateToken(30); ?>" />
+		<input type="hidden" name="token" value="<?php echo generateToken(30); ?>" />
 		<input type="hidden" name="form" value="login" />
 		
 		<p class = "label">Username</p>

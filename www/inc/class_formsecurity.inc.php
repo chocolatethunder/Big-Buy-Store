@@ -79,7 +79,7 @@ class security {
 				echo $_SESSION["token"];
 				*/		
 				
-				if ($allow === $sent) {
+				if ($allow === $sent && !empty($_POST["token"]) && $_POST["token"] == $_SESSION["token"]) {
 
 					return true;
 				

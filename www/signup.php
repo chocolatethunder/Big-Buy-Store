@@ -3,6 +3,10 @@
 // Load classes
 include ("inc/classload.inc.php");
 
+if (login::loginCheck() == true) {
+	login::logout();
+}
+
 // Process registration
 if (isset($_POST["register"])) {	
 	
@@ -36,7 +40,7 @@ include ("inc/header.inc.php");
 		<?php echo (isset($status) ? "<div id = \"status\">".$status."</div>" : null); ?>
 		<?php echo (isset($error["form"]) ? "<div id = \"error\">".$error["form"]."</div>" : null); ?>
 
-		<input type="hidden" name="token" value="<?php //echo $session->generateToken(30); ?>" />
+		<input type="hidden" name="token" value="<?php echo generateToken(30); ?>" />
 		<input type="hidden" name="form" value="signup" />
 
 		<p class = "label">Username</p>
