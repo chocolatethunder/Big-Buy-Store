@@ -1,5 +1,22 @@
 <?php
 
+// Load classes
+include ("inc/classload.inc.php");
+
+// Process registration
+if (isset($_POST["register"])) {	
+	
+	$error = array();	
+
+	$newClient = new registration($db, $_POST["uname"], $_POST["pass1"], $_POST["pass2"], $_POST["email"], (isset($_POST['terms'])? $_POST['terms'] : null ));
+	
+	if ($newClient->processData() == true) {
+		$_SESSION["success"] = "Awesome! Check your email to complete signup";
+		gotoPage("login.php");
+	}
+	
+}
+
 // Include header template
 include ("inc/header.inc.php");
 
