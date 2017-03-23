@@ -160,13 +160,11 @@ function getStartEndTimes() {
 }
 
 function generateRandString($len) {
-	//$token = md5(uniqid(rand(), true));
 	$randString = bin2hex(openssl_random_pseudo_bytes($len));
 	return substr($randString, 0, $len);
 }
 
 function generateToken($len) {
-	//$token = md5(uniqid(rand(), true));
 	$token = bin2hex(openssl_random_pseudo_bytes($len));
 	$_SESSION["token"] = $token;
 	return $token;
