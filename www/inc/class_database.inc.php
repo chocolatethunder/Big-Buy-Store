@@ -91,7 +91,7 @@ class pdodb {
 	}
 	
 	public function go($sql, $bind=NULL, $single=TRUE) {
-		global $logit;
+		
 		try {
 			$query = $this->PDO->prepare($sql);
 
@@ -115,9 +115,10 @@ class pdodb {
 			}
 			
 		} catch (PDOException $e){
-			$logit->database($e->getMessage());
+			//$logit->database($e->getMessage());
 			//$code = $query->errorInfo();
 			//$this->ecode = ("CODE: ".$code[1]);
+			echo "ERRORS: ".$e->getMessage();
 		}
 		return false;	
 	}
@@ -174,8 +175,6 @@ class pdodb {
 	
 	public function insert($table, $data, $cond=NULL) {
 		
-		global $logit;
-		
 		$prefix 	= "ins_";		
 		$bind 		= $this->bind($prefix, $data);
 		$table		= str_replace(".","`.`",$table);
@@ -187,7 +186,9 @@ class pdodb {
 		$sql .= "( :".$prefix.implode(", :".$prefix, array_keys($data))." )";
 		// Add any conditions
 		$sql .= ($cond != NULL ? " ".implode(" ",$cond) : NULL);
-	
+		
+		echo $sql;
+		
 		// Run the query
 		$result = $this->go($sql, $bind);		
 		if ($result !== NULL && $result !== FALSE) {
