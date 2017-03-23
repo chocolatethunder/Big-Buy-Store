@@ -46,6 +46,15 @@ body {
 	margin:0;
 }
 
+a {
+	color:#03A89E;
+	text-decoration:none;
+}
+
+a:hover {
+	text-decoration:underline;
+}
+
 
 /*     Non-Auth Form Elements   */
 
