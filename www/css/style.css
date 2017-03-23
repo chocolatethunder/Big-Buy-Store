@@ -81,19 +81,21 @@ body {
 }
 
 #search {
-	width:100%;
+	width:800px;
 	height:50px;
-	margin:30px 0 0 0;
+	margin:30px auto 0 auto;
 }
 
 #searchlabel {
-	width:250px;
+	float:left;
+	width:125px;
 	background-color:#03A89E;
 	color:#FFFFFF;
 	font-family:'robotobold';
 	font-size:20px;
 	text-align:right;
 	padding:12px 10px;
+	border-radius:5px 0 0 5px;
 }
 
 
@@ -135,6 +137,44 @@ a:hover {
 	text-decoration:underline;
 }
 
+/* search form */
+
+#searchform {
+	margin:0;
+	padding:0;
+}
+
+#searchform input {
+	width:530px;
+	height:51px;
+	background-color:#FFFFFF;
+	border:none;
+	padding:0 10px;	
+	font-family:"robotoregular";
+	font-size:16px;
+	color:#2d3235;	
+	box-shadow:inset 0px 1px 4px #999999;
+}
+
+#searchform input:focus {
+	outline:2px solid #03A89E;
+}
+
+#searchform  #submit {
+	width:100px;
+	font-family:"robotomedium";
+	margin:0;
+	background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(top, #f9f9f9, #e3e3e3); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(top, #f9f9f9, #e3e3e3); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(top, #f9f9f9, #e3e3e3);
+	background-image: -ms-linear-gradient(top, #f9f9f9 0%, #e3e3e3 100%);
+	border:1px solid #999999;
+	color:#2d3235;
+	box-shadow:none;	
+	border-radius:0 5px 5px 0;
+	outline:none;
+}
 
 /*     Non-Auth Form Elements   */
 

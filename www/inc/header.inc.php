@@ -35,8 +35,23 @@
 		
 		<div id = "search">
 			
-			<div id = "searchlabel">Search</div>
-			<div id = "searchbar"></div>
+			<div id = "searchlabel">SEARCH</div>
+			
+			<form action="search.php" method="post" id="searchform">  
+
+				<input type="hidden" name="token" value="<?php echo generateToken(30); ?>" />
+				<input type="hidden" name="form" value="search" />
+
+				<input type="text" name="uname" 
+				style = "<?php echo (isset($error["uname"]) ? "border:2px solid red;" : null); ?>" 
+				value = "<?php echo (isset($_POST["uname"]) ? cleanDisplay($_POST["uname"]) : null); ?>" />
+				<?php echo (isset($error["uname"]) ? "<p class = \"inputerror\">".$error["uname"]."</p>" : null); ?>
+				
+				<input type="submit" name="search" value="Go" id="submit" />
+
+			</form>
+
+			
 		
 		</div>		
 		
