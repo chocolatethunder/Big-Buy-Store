@@ -18,16 +18,29 @@
 
 <div id = "wrapper">
 
-	<div id = "header">The Big Buy Store</div>
-	
-	<div id = "navigation">
-	
-		<ul id = "menu">
+	<div id = "header">
 		
-			<li><a href = "index.php">Home</a></li>
-			<li><a href = "login.php">Login</a></li>
-			<li><a href = "signup.php">Signup</a></li>
+		<div id = "menu">
+			<ul>
+			
+				<li class = "home"><a href = "index.php">Home</a></li>
+				<li class = "login"><a href = "login.php">Login</a></li>
+				<li class = "signup"><a href = "signup.php">Signup</a></li>
+			
+			</ul>
+		</div>
 		
-		</ul>
-	
+		<div id = "sitelogo"></div>
+		<div id = "sitename">BIGBUY</div>
+		
+		<div id = "search">
+			
+			<div id = "searchlabel">Search</div>
+			<div id = "searchbar"></div>
+		
+		</div>		
+		
+
 	</div>
+	
+	

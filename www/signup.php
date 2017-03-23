@@ -30,7 +30,7 @@ include ("inc/header.inc.php");
 		
 	<div id = "title">
 	
-		<p class="microtitle">The BIGBUY Store</p>
+		<p class="microtitle">BIGBUY Store</p>
 		<p class="title">SIGNUP</p>
 		
 	</div>

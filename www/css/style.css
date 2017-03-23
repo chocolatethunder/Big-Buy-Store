@@ -12,10 +12,90 @@ body {
 }
 
 #wrapper {
-	width:800px;
 	min-width:500px;	
 	height:100%;
 }
+
+/* Header and navigation */
+
+#header {
+	height:100px;
+}
+
+#sitelogo {
+	width:100px;
+	height:100px;
+	background-image:url('../img/clogo.png');
+	background-repeat:no-repeat;
+	background-position:center center;
+	float:left;
+}
+
+#sitename {
+	font-family:'bitterbold';
+	line-height:56px;
+	font-size:56px;
+	color:#03A89E;
+	padding:20px 0 0 0;
+	margin:0;
+	width:700px;
+}
+
+#menu {
+	float:right;
+	font-family:'robotobold';
+	font-size:16px;
+	color:#FFFFFF;
+	margin:35px 20px 20px 20px;
+}
+
+#menu ul li {
+	display:inline;
+	padding:27px;
+	list-style:none;
+	background-repeat:no-repeat;
+	background-position:7px center;
+	margin:0 -5px;
+}
+
+#menu ul li.home {
+	background-image:url('../img/icon_home.png');	
+}
+
+#menu ul li.login {
+	background-image:url('../img/icon_login.png');	
+}
+
+#menu ul li.signup {
+	background-image:url('../img/icon_signup.png');	
+}
+
+#menu ul li a {
+	text-decoration:none;
+	color:#03A89E;
+	padding:7px 15px;
+}
+
+#menu ul li a:hover {
+	border-bottom:3px #03A89E solid;
+}
+
+#search {
+	width:100%;
+	height:50px;
+	margin:30px 0 0 0;
+}
+
+#searchlabel {
+	width:250px;
+	background-color:#03A89E;
+	color:#FFFFFF;
+	font-family:'robotobold';
+	font-size:20px;
+	text-align:right;
+	padding:12px 10px;
+}
+
 
 #content {
 	width:500px;	
