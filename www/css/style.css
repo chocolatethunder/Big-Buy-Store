@@ -1,50 +1,156 @@
-/* CSS Reset */
-
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)   
-*/
-
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+html {
+	height:100%;
 }
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
+
 body {
-	line-height: 1;
+	height:100%;
+	height:100%;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-attachment: fixed;
+	background-size:cover;
 }
-ol, ul {
-	list-style: none;
+
+#wrapper {
+	width:800px;
+	min-width:500px;	
+	height:100%;
 }
-blockquote, q {
-	quotes: none;
+
+#content {
+	width:500px;	
+	position:relative;
+	top:100px;
+	margin: 0 auto;
+	border-radius: 10px;	
+	padding:20px;	
+	background-color:#FFFFFF;
+	box-shadow: 1px 3px 5px rgba(0,0,0,0.5);
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
+
+#content .microtitle {
+	font-family:'bitterbold';
+	line-height:25px;
+	font-size:25px;
+	color:#03A89E;
+	padding:0;
+	margin:0;
 }
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
+
+#content .title {
+	font-family:'bitterbold';
+	line-height:56px;
+	font-size:56px;
+	color:#03A89E;
+	padding:0;
+	margin:0;
+}
+
+
+/*     Non-Auth Form Elements   */
+
+#nonauthform {
+	margin: 25px 0 0 0;
+}
+
+#nonauthform .label {
+	font-family:'robotomedium';
+	font-size:16px;
+	color:#2d3235;
+	padding:0;
+	margin:15px 0 5px 3px;
+}
+
+#nonauthform .microlabel {
+	font-family:'robotomedium';
+	font-size:14px;
+	color:#2d3235;
+	padding:0;
+	margin:3px 0 15px 3px;
+}
+
+#nonauthform input {
+	width:480px;
+	height:35px;
+	background-color:#FFFFFF;
+	border:none;
+	padding:0 7px;
+	border:2px solid #FFFFFF;	
+	font-family:"robotoregular";
+	font-size:16px;
+	color:#2d3235;	
+	box-shadow:inset 0px 1px 4px #999999;
+}
+
+#nonauthform input:focus {
+	outline:2px solid #03A89E;
+}
+
+#nonauthform  #submit {
+	width:100px;
+	font-family:"robotomedium";
+	margin:15px 20px 0 0;
+	background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(top, #f9f9f9, #e3e3e3); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(top, #f9f9f9, #e3e3e3); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(top, #f9f9f9, #e3e3e3);
+	background-image: -ms-linear-gradient(top, #f9f9f9 0%, #e3e3e3 100%);
+	border:1px solid #999999;
+	color:#2d3235;
+	box-shadow:none;	
+	border-radius:5px;
+	outline:none;
+}
+
+#nonauthform #submit:hover {
+	background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(top, #e3e3e3, #f9f9f9); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(top, #e3e3e3, #f9f9f9); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(top, #e3e3e3, #f9f9f9);
+	background-image: -ms-linear-gradient(top, #e3e3e3 0%, #f9f9f9 100%);
+	cursor:pointer;
+}
+
+#nonauthform  p.labelinfo {
+	font-family:"robotoregular";
+	font-size:16px;
+	color:#2d3235;
+	margin:0 0 25px 0;
+}
+
+#nonauthform .inputerror {   /* error */
+	margin:0 0 10px 0;
+	width:483px;
+	font-family:'robotomedium';
+	font-size:14px;
+	background-color:#ED4337;
+	color:#FFFFFF;
+	padding:5px 5px 5px 10px;
+}
+
+#nonauthform select {
+	border: 0 !important;  /*Removes border*/
+	appearance: none;	
+	-webkit-appearance: none;  /*Removes default chrome and safari style*/
+	-moz-appearance: none; /* Removes Default Firefox style*/
+	background: url(/assets/img/icon_down.png) no-repeat 98% center; 
+	width: 315px; /*Width of select dropdown to give space for arrow image*/
+	text-indent: 0.01px; /* Removes default arrow from firefox*/
+	text-overflow: "";  /*Removes default arrow from firefox*/ /*My custom style for fonts*/
+	color: #2d3235;
+	padding:0 7px;
+	margin-left:2px;
+	box-shadow:inset 0px 1px 4px #999999;
+	height:35px;
+	outline:none;
+}
+
+#nonauthform #check {
+	margin:25px 0 15px 0;
+	padding:0;
+	border:none;
+	box-shadow:none;
+	width:15px;
+	height:15px;
+	outline:none;
 }
