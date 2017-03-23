@@ -1,3 +1,12 @@
+<?php
+
+// Import configuration file
+include ("inc/config.inc.php");
+include ("inc/class_database.inc.php");
+
+$db = new pdodb (Conf::DBNAME);
+
+?>
 <!doctype html>
 
 <html lang="en">
