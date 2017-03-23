@@ -163,3 +163,48 @@ a:hover {
 	height:15px;
 	outline:none;
 }
+
+/* status css */
+
+#complete, #incomplete, #failed {
+	padding:5px 5px 5px 35px;
+	font-family:'robotomedium';
+	font-size:18px;
+	background-position:0 center;
+	background-repeat:no-repeat;
+}
+
+#failed {
+	background-image:url('../img/icon_error.png');
+	color:#ED4337;
+}
+
+#incomplete {
+	background-image:url('../img/icon_caution.png');
+	color:#FF7D40;
+}
+
+#complete {
+	background-image:url('../img/icon_good.png');
+	color:#458B00;
+}
+
+#error, #status {
+	padding:5px 5px 5px 35px;
+	font-family:'robotobold';
+	font-size:16px;
+	margin-bottom:20px;
+	background-position:0 center;
+	background-repeat:no-repeat;
+	text-align:left;
+}
+
+#error {
+	background-image:url('../img/icon_error.png');
+	color:#ED4337;
+}
+
+#status {
+	background-image:url('../img/icon_good.png');
+	color:#458B00;
+}
