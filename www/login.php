@@ -1,5 +1,10 @@
 <?php
 
+// Load classes
+include ("inc/classload.inc.php");
+
+// Process Login
+
 // Include header template
 include ("inc/header.inc.php");
 
@@ -14,7 +19,7 @@ include ("inc/header.inc.php");
 		
 	</div>
 	
-	<?php //errorhandler(); ?>
+	<?php errorhandler(); ?>
 		
 	<form action="login.php" method="post" id="nonauthform">  
 
