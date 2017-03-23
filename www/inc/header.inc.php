@@ -2,9 +2,11 @@
 
 // Import configuration file
 include ("inc/config.inc.php");
+include ("inc/functions.inc.php");
+// Import classes
 include ("inc/class_database.inc.php");
 
-$db = new pdodb (Conf::DBNAME);
+$db = new pdodb(Conf::DBNAME);
 
 ?>
 <!doctype html>
@@ -15,6 +17,8 @@ $db = new pdodb (Conf::DBNAME);
 
   <title>The Big Buy Store</title>
 
+  <link rel="stylesheet" type="text/css" href="css/fonts/fonts.css">
+  <link rel="stylesheet" type="text/css" href="css/normalize.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
   
   <script src="script.js"></script>
@@ -22,3 +26,19 @@ $db = new pdodb (Conf::DBNAME);
 </head>
 
 <body>
+
+<div id = "wrapper">
+
+	<div id = "header">The Big Buy Store</div>
+	
+	<div id = "navigation">
+	
+		<ul id = "menu">
+		
+			<li><a href = "index.php">Home</a></li>
+			<li><a href = "login.php">Login</a></li>
+			<li><a href = "index.php">Signup</a></li>
+		
+		</ul>
+	
+	</div>
