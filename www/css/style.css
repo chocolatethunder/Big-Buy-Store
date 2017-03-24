@@ -83,7 +83,7 @@ body {
 }
 
 #welcomemsg {
-	font-family:'roboto';
+	font-family:'robotoregular';
 	font-size:16px;
 	color:#03A89E;
 	text-align:right;
@@ -160,6 +160,27 @@ a:hover {
 	padding:10px;
 	list-style:none;
 	margin:0 -5px;
+}
+
+#upgrade {
+	width:200px;
+	text-align:center;
+	margin:0;
+}
+
+#upgrade a {
+	font-family:"robotobold";
+	font-size:16px;
+	color:#FFFFFF;
+	padding:10px 38px;
+	background-color:#32c3f3;
+	border:2px solid #32c3f3;
+}
+
+#upgrade a:hover {
+	color:#32c3f3;
+	background-color:#FFFFFF;
+	text-decoration:none;
 }
 
 #class_seller, #class_user, #class_mods {

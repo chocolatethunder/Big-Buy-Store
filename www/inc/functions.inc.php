@@ -337,6 +337,10 @@ function debugarray($array) {
 
 function dashnav ($acc) {
 	
+	if ($acc == 1) {
+		echo "<div id = \"upgrade\"><a href=\"upgrade.php\">Become a seller!</a></div><br/>";
+	}
+	
 	$user["dashboard.php"] 	= "Orders";
 	$user["address.php"] 	= "Change Address";
 	$user["wishlist.php"] 	= "Wishlist";
