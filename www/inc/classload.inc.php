@@ -17,7 +17,7 @@ $securityCheck 	= new security();
 
 // Allowed public places
 
-$publicpages = array ("login","signup","search","index");
+$publicpages = array ("login","signup","search","home");
 
 // Auto logout if it is not a private page and user is not logged in.
 
