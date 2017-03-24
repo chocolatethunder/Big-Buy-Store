@@ -49,9 +49,50 @@ class user {
 		
 	}
 	
-	public function getOrdersData() {
+	public function performPasswordChange ($passo, $pass1, $pass2) {
 		
+		global $error, $securityCheck;
 		
+		if ($securityCheck->checkForm($_POST["form"]) == true) {
+			
+			if (isset($passo)) {
+				
+				if (isset($pass1) && !empty($pass2)) {
+				
+					if (strlen($pass1) > 8) {
+						
+						$crypted = crypt($passo, $this->udata["pass"]);
+						
+						if ($crypted === $this->udata["pass"]) {
+							
+							similar_text($pass1, $pass2, $matchpair);
+						
+							if ($matchpair == 100) {
+	
+								$salt 		= bin2hex(openssl_random_pseudo_bytes(22));
+								$salt 		= substr($salt, 0, 22);
+								$hashpassword = crypt($pass1, "$2y$12$".$salt);
+								
+								if (isset($hashpassword) && !empty($hashpassword)) {
+
+									if ($this->dbo->update($this->dbn."USERS", array("pass" => $hashpassword), array("id" => $this->uid))) {
+										return true;									
+									}			
+								
+								}
+								
+							} else { $error["pass1"] = "Passwords don't match"; $error["pass2"] = "Passwords don't match"; }							
+							
+						} else { $error["passo"] = "You have entered an incorrect password"; }				
+						
+					} else { $error["pass1"] = "Password is too short. A minimum of 8 characters are required."; }
+				
+				} else { $error["pass1"] = "Password cannot be blank"; }
+				
+			} else { $error["passo"] = "You must enter your current password"; }		
+		
+		}
+		return false;
 	}
 	
 }
