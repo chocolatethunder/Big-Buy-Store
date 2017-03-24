@@ -100,6 +100,17 @@ CREATE TABLE PRODUCT (
 			ON UPDATE CASCADE
 );
 
+CREATE TABLE ORDERITEMS (
+    orderid INTEGER(9),
+    contains INTEGER(9),
+    FOREIGN KEY (orderid) REFERENCES ORDERS(oid)
+    		ON DELETE SET NULL
+    		ON UPDATE CASCADE,
+    FOREIGN KEY (prodid) REFERENCES PRODUCT(pid)
+    		ON DELETE SET NULL
+    		ON UPDATE CASCADE
+);
+
 /* Seller products advertizing */
 
 CREATE TABLE LISTS (
