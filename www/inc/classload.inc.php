@@ -14,6 +14,11 @@ include ("inc/class_formsecurity.inc.php");
 $db 			= new pdodb(Conf::DBNAME);
 $securityCheck 	= new security();
 
+if (login::loginCheck() == true) {
+	include ("inc/class_user.inc.php");	
+	$user = new user($db);
+}
+
 
 // Allowed public places
 
