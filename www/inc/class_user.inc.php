@@ -63,6 +63,26 @@ class user {
 		return false;
 	}
 	
+	public function userPendingUpgrade() {
+		switch ($this->userDataQuery("upgrade")) {
+			case 'N':
+			return false;
+			
+			case 'Y':
+			return true;
+			
+			default:
+			return false;
+		}
+	}
+	
+	public function activateUpgrade() {
+		if ($this->dbo->update($this->dbn."USERINFO", array("upgrade" => "Y"), array("uid" => $this->getuid()))) {
+			return true;
+		}
+		return false;
+	}
+	
 	public function performPasswordChange ($passo, $pass1, $pass2) {
 		
 		global $error, $securityCheck;

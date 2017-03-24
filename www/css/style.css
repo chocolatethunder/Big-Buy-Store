@@ -511,6 +511,16 @@ select::-ms-expand {
 	cursor:pointer;
 }
 
+#contentform #check {
+	margin:10px 0 0 -20px;
+	padding:0;
+	border:none;
+	box-shadow:none;
+	width:15px;
+	height:15px;
+	outline:none;
+}
+
 /* status css */
 
 #complete, #incomplete, #failed {
