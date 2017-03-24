@@ -57,6 +57,10 @@ class security {
 			$allowed["changepassword"] = "";
 			break;
 			
+			case "upgraderequest":
+			$allowed["terms"] = "";
+			$allowed["upgrade"] = "";
+			break;			
 			
 			// default is always false
 			default:
@@ -77,7 +81,7 @@ class security {
 			
 			// Simple check for XSS attacks 
 			
-			$publicpages = array("signup", "login");
+			$publicpages = array ("login","signup","search","home");
 			
 			$allowed = $this->getDefinition($form);	
 
