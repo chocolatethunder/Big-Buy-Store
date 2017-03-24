@@ -148,7 +148,11 @@ class registration {
 
 			// Third query
 			$userauth_data = array("uid" => $newuserid, "lvl" => 1, "address" => $newuserid, "emailCode" => $this->emailCode);			
-			$querysuccess["user_auth"] = $this->dbo->insert($this->dbn."USERINFO", $userauth_data);				
+			$querysuccess["user_auth"] = $this->dbo->insert($this->dbn."USERINFO", $userauth_data);
+
+			// Fourth Query
+			$usercart_data = array("belongsto" => $newuserid);
+			$querysuccess["user_cart"] = $this->dbo->insert($this->dbn."SHOPPINGCART", $usercart_data);			
 			
 			
 			if (!in_array(false, array_values($querysuccess), true) == true) {				
