@@ -5,11 +5,6 @@ $file = preg_replace('/\.php$/', '', basename(__FILE__));
 include ("inc/classload.inc.php");
 
 // Process
-print_r($db->joinselect(Conf::DBNAME.".USERS", 
-				array(	array("USERS" => "id", "USERINFO" => "uid"), 
-						array("USERINFO" => "address", "ADDRESS" => "addrid")),
-				array("id" => 1)));
-
 
 // Include header template
 include ("inc/header.inc.php");
