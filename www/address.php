@@ -24,6 +24,7 @@ if (isset($_POST["submit_address"])) {
 
 	if ($updateaddr->processData() == true) {
 		$_SESSION["success"] = "Personal Info Saved.";
+		$_POST = array();
 	}
 
 }
@@ -51,7 +52,7 @@ include ("inc/header.inc.php");
 					<li class = "home"><a href = "dashboard.php">Orders</a></li>
 					<li class = "home"><a href = "address.php">Address</a></li>
 					<li class = "home"><a href = "#">Wishlist</a></li>
-					<li class = "home"><a href = "#">Change Password</a></li>
+					<li class = "home"><a href = "password.php">Change Password</a></li>
 				
 				</ul>
 			
@@ -101,13 +102,13 @@ include ("inc/header.inc.php");
 	
 	<div id = "displaywindow">
 		
-		<div id = "divlabel">Update your address information</div>
+		<div id = "divlabel">Update your address</div>
 		
 		<?php errorhandler(); ?>
 	
 		<form action="address.php" method="post" id = "contentform">
 
-			<input type="hidden" name="token" id = "csrftoken" value="<?php echo generateToken(40); ?>" />
+			<input type="hidden" name="token" id = "csrftoken" value="<?php echo generateToken(30); ?>" />
 			<input type="hidden" name="form" id = "csrfform" value="update_address" />
 			
 			<div id ="label">First Name</div><div id ="fieldreq"><input type="text" name="fname" style = "<?php echo (isset($error["fname"]) ? "border:2px solid red;" : null); ?>" value = "<?php echo (isset($_POST["fname"]) ? cleanDisplay($_POST["fname"]) : null); ?>" /><span class = "detail"></span><?php echo (isset($error["fname"]) ? "<p class = \"inputerror\">".$error["fname"]."</p>" : null); ?></div>

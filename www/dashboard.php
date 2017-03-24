@@ -29,7 +29,7 @@ include ("inc/header.inc.php");
 					<li class = "home"><a href = "dashboard.php">Orders</a></li>
 					<li class = "home"><a href = "address.php">Address</a></li>
 					<li class = "home"><a href = "#">Wishlist</a></li>
-					<li class = "home"><a href = "#">Change Password</a></li>
+					<li class = "home"><a href = "password.php">Change Password</a></li>
 				
 				</ul>
 			
