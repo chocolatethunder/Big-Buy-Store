@@ -50,6 +50,13 @@ class security {
 			$allowed["submit_address"] = "";
 			break;
 			
+			case "passwordupdate":
+			$allowed["passo"] = "";
+			$allowed["pass1"] = "";
+			$allowed["pass2"] = "";
+			$allowed["changepassword"] = "";
+			break;
+			
 			
 			// default is always false
 			default:
