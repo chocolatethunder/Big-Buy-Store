@@ -23,20 +23,25 @@ class user {
 	}
 	
 	private function userDataQuery($col) {
+		
 		if ($col != "pass" && array_key_exists($col, $this->udata)) {
 			return $this->udata[$col];
 		}
 		return false;
 	}
 	
-	public function account_type () {		
+	public function account_type() {		
 		return $this->udata["lvl"];
+	}
+	
+	public function getuid() {
+		return $this->uid;
 	}
 
 	public function getUserData($type) {
 		
 		if (login::loginCheck() == true) {
-				return $this->userDataQuery($type);	
+			return $this->userDataQuery($type);	
 		} else {
 			login::logout();
 		}
