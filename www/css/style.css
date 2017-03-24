@@ -200,6 +200,16 @@ a:hover {
 	border-bottom:3px #BF5FFF solid;
 }
 
+#displaywindow {
+	float:left;
+	border:1px solid #000;
+	padding:10px;
+}
+
+#submenu {
+	float:left;
+}
+
 /* search form */
 
 #searchform {
