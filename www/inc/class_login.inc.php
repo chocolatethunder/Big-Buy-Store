@@ -102,6 +102,8 @@ class login {
 
 			if ($crypted === $userdata["pass"]) {
 				return true;
+			} else {
+				$error["form"] = "Bad username or password";
 			}
 
 		} else {
@@ -117,9 +119,18 @@ class login {
 		if ($this->validateForm() == true) {		
 
 			if ($this->checkCredentials() == TRUE) {
+				
+				session_regenerate_id();
+				
+				$_SESSION["uid"] 			= $this->uid;
+				$_SESSION["uname"] 			= $this->uname;
+				$_SESSION["email"] 			= $this->email;
+				$_SESSION["lastactivity"] 	= time();
 				$_SESSION["loggedin"] = 1;
-				$_SESSION["success"] = "Successfully logged in!";
-				gotoPage("login.php");
+				
+				$sessionid = session_id();				
+				
+				gotoPage("index.php");
 				return true;
 			}
 	
@@ -156,10 +167,8 @@ class login {
 		return false;		
 	}
 	
-	public static function logout () {
-		
-		global $session, $db;
-		
+	public static function logout() {
+
 		login::resetsession();
 		
 		unset($_SESSION);
