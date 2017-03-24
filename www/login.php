@@ -1,6 +1,7 @@
 <?php
 
 // Load classes
+$file = preg_replace('/\.php$/', '', basename(__FILE__));
 include ("inc/classload.inc.php");
 
 // Process Login
@@ -41,7 +42,6 @@ include ("inc/header.inc.php");
 		style = "<?php echo (isset($error["uname"]) ? "border:2px solid red;" : null); ?>" 
 		value = "<?php echo (isset($_POST["uname"]) ? cleanDisplay($_POST["uname"]) : null); ?>" />
 		<?php echo (isset($error["uname"]) ? "<p class = \"inputerror\">".$error["uname"]."</p>" : null); ?>
-		<p class="microlabel"><a href ="flare.php?recover=username">I forgot my username</a></p>
 		
 		<p class = "label">Password</p>
 		<input type="password" name="pass" 

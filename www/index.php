@@ -1,5 +1,6 @@
 <?php
 // Load classes
+$file = "home";
 include ("inc/classload.inc.php");
 
 

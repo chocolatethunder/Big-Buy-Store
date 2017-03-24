@@ -1,5 +1,7 @@
 <?php
+
 // Load classes
+$file = preg_replace('/\.php$/', '', basename(__FILE__));
 include ("inc/classload.inc.php");
 
 
