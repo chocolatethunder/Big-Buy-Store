@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
 
-  <title>The Big Buy Store</title>
+  <title>Big Buy Store</title>
 
   <link rel="stylesheet" type="text/css" href="css/fonts/fonts.css">
   <link rel="stylesheet" type="text/css" href="css/normalize.css">

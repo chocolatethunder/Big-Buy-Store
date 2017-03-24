@@ -16,7 +16,7 @@ if (isset($_POST["register"])) {
 	$newClient = new registration($db, $_POST["uname"], $_POST["pass1"], $_POST["pass2"], $_POST["email"], (isset($_POST['terms'])? $_POST['terms'] : null ));
 	
 	if ($newClient->processData() == true) {
-		$_SESSION["success"] = "Awesome! Check your email to complete signup";
+		$_SESSION["success"] = "Awesome! You may now sign in";
 		gotoPage("login.php");
 	}
 	
