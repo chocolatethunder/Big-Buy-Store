@@ -14,49 +14,71 @@ include ("inc/header.inc.php");
 <div id = "maincontent">
 	
 	<div id = "submenu">
-
-		<div id = "class_user">
-			
-			<ul>
-			
-				<li class = "home"><a href = "#">Orders</a></li>
-				<li class = "home"><a href = "#">Address</a></li>
-				<li class = "home"><a href = "#">Wishlist</a></li>
-				<li class = "home"><a href = "#">Change Password</a></li>
-			
-			</ul>
+	
+		<?php 
 		
-		</div>
+		$acc = $user->account_type();
 		
-		<div id = "class_seller">
+		// Buyer level
+		if ($acc >= 1) {
+			?>
+			<div id = "class_user">
+				
+				<ul>
+				
+					<li class = "home"><a href = "dashboard.php">Orders</a></li>
+					<li class = "home"><a href = "address.php">Address</a></li>
+					<li class = "home"><a href = "#">Wishlist</a></li>
+					<li class = "home"><a href = "#">Change Password</a></li>
+				
+				</ul>
 			
-			<ul>
-			
-				<li class = "home"><a href = "#">Pending Orders</a></li>
-				<li class = "home"><a href = "#">Listings</a></li>
-				<li class = "home"><a href = "#">Add Product</a></li>
-			
-			</ul>
+			</div>
+			<?php
+		}
 		
-		</div>
+		// Seller level
+		if ($acc >= 2) {
+			?>
+			<div id = "class_seller">
+			
+				<ul>
+				
+					<li class = "home"><a href = "#">Pending Orders</a></li>
+					<li class = "home"><a href = "#">Listings</a></li>
+					<li class = "home"><a href = "#">Add Product</a></li>
+				
+				</ul>
+			
+			</div>
+			<?php
+		}
 		
-		<div id = "class_mods">
+		// Admin Level
+		if ($acc >= 3) {
 			
-			<ul>
+			?>
+			<div id = "class_mods">
 			
-				<li class = "home"><a href = "#">Approve sellers</a></li>
-				<li class = "home"><a href = "#">Approve moderators</a></li>
+				<ul>
+				
+					<li class = "home"><a href = "#">Approve sellers</a></li>
+					<li class = "home"><a href = "#">Approve moderators</a></li>
+				
+				</ul>
 			
-			</ul>
+			</div>
+			<?php
+		}
 		
-		</div>
+		?>		
 	
 	</div>
 	
 	<br/>
 	
 	<div id = "displaywindow">
-		<?php echo "orders here"; ?>
+		<div id = "divlabel">View your orders</div>
 	</div>
 
 </div>

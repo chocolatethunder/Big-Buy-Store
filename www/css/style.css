@@ -202,13 +202,20 @@ a:hover {
 
 #displaywindow {
 	float:left;
-	border:1px solid #000;
 	padding:10px;
 }
 
 #submenu {
 	float:left;
 }
+
+#divlabel {
+	margin:0 0 30px 0;
+	font-family:'roboto_condensedbold';
+	font-size:20px;
+	color:#2d3235;	
+}
+
 
 /* search form */
 
@@ -357,6 +364,118 @@ a:hover {
 	outline:none;
 }
 
+/* Universal Form Elements */
+
+input[type="submit"] {
+	border:none;
+	outline:none;
+}
+
+#contentform  #label {
+	width:200px;
+	font-family:"robotomedium";
+	font-size:16px;
+	color:#2d3235;
+	float: left;
+	text-align: right;
+	margin: 5px 15px 0 0;
+}
+
+
+#contentform  #field {
+	margin:10px;
+}
+
+#contentform  #fieldreq {
+	margin:10px 0;
+	width:540px;
+	margin-left:210px;
+}
+
+#contentform input {
+	width:350px;
+	height:35px;
+	background-color:#FFFFFF;
+	border:none;
+	padding:0 7px;
+	border:2px solid #FFFFFF;	
+	font-family:"robotoregular";
+	font-size:16px;
+	color:#2d3235;	
+	box-shadow:inset 0px 1px 4px #999999;
+}
+
+#contentform input:focus {
+	outline:2px solid #03A89E;
+}
+
+#contentform  #submit, #contentform  #cancel, #contentform #make {
+	font-family:"robotomedium";
+	background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(top, #f9f9f9, #e3e3e3); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(top, #f9f9f9, #e3e3e3); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(top, #f9f9f9, #e3e3e3);
+	background-image: -ms-linear-gradient(top, #f9f9f9 0%, #e3e3e3 100%);
+	border:1px solid #999999;
+	color:#2d3235;
+	box-shadow:none;	
+	border-radius:5px;
+	outline:none;
+}
+
+#contentform  #submit {
+	width:100px;
+	margin:15px 0 0 215px;
+}
+
+#contentform  #cancel {
+	width:100px;
+	margin:15px 0 0 15px;
+}
+
+#contentform #submit:hover, #contentform #cancel:hover, #contentform #make:hover  {
+	background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(top, #e3e3e3, #f9f9f9); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(top, #e3e3e3, #f9f9f9); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(top, #e3e3e3, #f9f9f9);
+	background-image: -ms-linear-gradient(top, #e3e3e3 0%, #f9f9f9 100%);
+	cursor:pointer;
+}
+
+#contentform .inputerror {   /* error */
+	margin:0 auto 10px 5px;
+	width:353px;
+	font-family:'robotomedium';
+	font-size:14px;
+	background-color:#ED4337;
+	color:#FFFFFF;
+	padding:5px 5px 5px 10px;
+}
+
+#contentform select {
+	border: 0 !important;  /*Removes border*/
+	appearance: none;	
+	-webkit-appearance: none;  /*Removes default chrome and safari style*/
+	-moz-appearance: none; /* Removes Default Firefox style*/
+	background: url(/assets/img/icon_down.png) no-repeat 98% center; 
+	width: 364px; /*Width of select dropdown to give space for arrow image*/
+	text-indent: 0.01px; /* Removes default arrow from firefox*/
+	text-overflow: "";  /*Removes default arrow from firefox*/ /*My custom style for fonts*/
+	color: #2d3235;
+	padding:0 7px;
+	margin-left:2px;
+	box-shadow:inset 0px 1px 4px #999999;
+	height:35px;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+#contentform select:hover {
+	cursor:pointer;
+}
+
 /* status css */
 
 #complete, #incomplete, #failed {
@@ -401,3 +520,5 @@ a:hover {
 	background-image:url('../img/icon_good.png');
 	color:#458B00;
 }
+
+/* helper buttons */
