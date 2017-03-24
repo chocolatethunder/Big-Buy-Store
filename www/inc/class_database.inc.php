@@ -233,8 +233,6 @@ class pdodb {
 		// Add any conditions
 		$sql .= ($cond != NULL ? " ".implode(" ",$cond) : NULL);
 		
-		echo $sql;
-		
 		// Run the query
 		$result = $this->go($sql, $bind);		
 		if ($result !== NULL && $result !== FALSE) {
