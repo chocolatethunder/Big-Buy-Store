@@ -21,17 +21,40 @@
 	<div id = "header">
 		
 		<div id = "menu">
-			<ul>
+		
+			<?php if (login::loginCheck() == true) { ?>
+				
+				<div id = "welcomemsg">Welcome <?php echo $_SESSION["uname"]; ?></div>
+				
+				<ul>
+				
+					<li class = "home"><a href = "index.php">Home</a></li>
+					<li class = "dash"><a href = "dashboard.php">Dashboard</a></li>
+					<li class = "cart"><a href = "cart.php">Cart</a></li>
+					<li class = "logout"><a href = "login.php">Logout</a></li>
+				
+				</ul>
 			
-				<li class = "home"><a href = "index.php">Home</a></li>
-				<li class = "login"><a href = "login.php">Login</a></li>
-				<li class = "signup"><a href = "signup.php">Signup</a></li>
+			<?php } else { ?>		
+				
+				<div id = "welcomemsg"></div>
+				
+				<ul>
+				
+					<li class = "home"><a href = "index.php">Home</a></li>
+					<li class = "login"><a href = "login.php">Login</a></li>
+					<li class = "signup"><a href = "signup.php">Signup</a></li>
+				
+				</ul>
 			
-			</ul>
+			<?php } ?>
+		
 		</div>
 		
 		<div id = "sitelogo"></div>
 		<div id = "sitename">BIGBUY</div>
+		
+		<br/>
 		
 		<div id = "search">
 			
@@ -42,19 +65,16 @@
 				<input type="hidden" name="token" value="<?php echo generateToken(30); ?>" />
 				<input type="hidden" name="form" value="search" />
 
-				<input type="text" name="uname" 
-				style = "<?php echo (isset($error["uname"]) ? "border:2px solid red;" : null); ?>" 
-				value = "<?php echo (isset($_POST["uname"]) ? cleanDisplay($_POST["uname"]) : null); ?>" />
-				<?php echo (isset($error["uname"]) ? "<p class = \"inputerror\">".$error["uname"]."</p>" : null); ?>
+				<input type="text" name="search" 
+				style = "<?php echo (isset($error["search"]) ? "border:2px solid red;" : null); ?>" 
+				value = "<?php echo (isset($_POST["search"]) ? cleanDisplay($_POST["search"]) : null); ?>" />
+				<?php echo (isset($error["search"]) ? "<p class = \"inputerror\">".$error["search"]."</p>" : null); ?>
 				
 				<input type="submit" name="search" value="Go" id="submit" />
 
-			</form>
-
-			
+			</form>			
 		
-		</div>		
-		
+		</div>	
 
 	</div>
 	
