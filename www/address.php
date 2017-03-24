@@ -25,6 +25,8 @@ if (isset($_POST["submit_address"])) {
 	if ($updateaddr->processData() == true) {
 		$_SESSION["success"] = "Personal Info Saved.";
 		$_POST = array();
+		// Reload the user class
+		$user = new user ($db);
 	}
 
 }
@@ -334,11 +336,27 @@ include ("inc/header.inc.php");
 			<input type="submit" id="submit" name="submit_address" value="Submit" />
 		
 		</form>
-
+		
+		<br/><br/>
+		
+		<div id = "divlabel">Your current information</div>
+		
+		<?php
+		
+		if ($user->isAddressInfoComplete()) {
+			echo $user->getUserFullNameString();
+			echo $user->getUserAddressString();
+		} else {
+			echo "No information provided.";
+		}
+		
+		?>
 		
 	</div>
 
 </div>
+
+
 
 
 <?php

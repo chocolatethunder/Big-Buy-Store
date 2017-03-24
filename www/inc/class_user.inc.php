@@ -22,8 +22,7 @@ class user {
 
 	}
 	
-	private function userDataQuery($col) {
-		
+	private function userDataQuery($col) {		
 		if ($col != "pass" && array_key_exists($col, $this->udata)) {
 			return $this->udata[$col];
 		}
@@ -38,15 +37,30 @@ class user {
 		return $this->uid;
 	}
 
-	public function getUserData($type) {
-		
+	public function getUserData($type) {		
 		if (login::loginCheck() == true) {
 			return $this->userDataQuery($type);	
 		} else {
 			login::logout();
 		}
+		return false;		
+	}
+	
+	public function getUserFullNameString() {		
+		return $this->userDataQuery("fname")." ".$this->userDataQuery("lname")."<br/>";		
+	}
+	
+	public function getUserAddressString() {		
+		$addr = $this->userDataQuery("street").", ".$this->userDataQuery("unit")."<br/>".$this->userDataQuery("city").", ".$this->userDataQuery("province")."<br/>".$this->userDataQuery("pcode").", ".$this->userDataQuery("country")."<br/>".$this->userDataQuery("phone");		
+		return $addr;		
+	}
+	
+	public function isAddressInfoComplete() {		
+		$addressarray = array ($this->udata["street"],$this->udata["city"],$this->udata["province"],$this->udata["pcode"],$this->udata["country"],$this->udata["phone"]);		
+		if (!in_array(NULL,$addressarray, true)) {
+			return true;
+		}		
 		return false;
-		
 	}
 	
 	public function performPasswordChange ($passo, $pass1, $pass2) {
