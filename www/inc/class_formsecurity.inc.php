@@ -36,6 +36,20 @@ class security {
 			break;
 			
 			// PRIVATE PAGES //
+			// located on verify.php
+			case "update_address":
+			$allowed["fname"] = "";
+			$allowed["lname"] = "";
+			$allowed["street"] = "";
+			$allowed["apt"] = "";
+			$allowed["pcode"] = "";
+			$allowed["city"] = "";
+			$allowed["state"] = "";
+			$allowed["country"] = "";
+			$allowed["phone"] = "";
+			$allowed["submit_address"] = "";
+			break;
+			
 			
 			// default is always false
 			default:

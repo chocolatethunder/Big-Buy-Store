@@ -5,6 +5,28 @@ $file = preg_replace('/\.php$/', '', basename(__FILE__));
 include ("inc/classload.inc.php");
 
 // Process
+if (isset($_POST["submit_address"])) {
+	
+	$updateaddr = new address($db);
+	
+	$error = array();
+	
+	$updateaddr->fname 		= $_POST["fname"];
+	$updateaddr->lname 		= $_POST["lname"];
+	$updateaddr->street		= $_POST["street"];
+	$updateaddr->apt 		= $_POST["apt"];
+	$updateaddr->city 		= $_POST["city"];
+	$updateaddr->state 		= $_POST["state"];
+	$updateaddr->pcode 		= $_POST["pcode"];
+	$updateaddr->country 	= $_POST["country"];
+	$updateaddr->phone 		= $_POST["phone"];
+	
+
+	if ($updateaddr->processData() == true) {
+		$_SESSION["success"] = "Personal Info Saved.";
+	}
+
+}
 
 // Include header template
 include ("inc/header.inc.php");
@@ -80,11 +102,13 @@ include ("inc/header.inc.php");
 	<div id = "displaywindow">
 		
 		<div id = "divlabel">Update your address information</div>
+		
+		<?php errorhandler(); ?>
 	
 		<form action="address.php" method="post" id = "contentform">
 
 			<input type="hidden" name="token" id = "csrftoken" value="<?php echo generateToken(40); ?>" />
-			<input type="hidden" name="form" id = "csrfform" value="verify_address" />
+			<input type="hidden" name="form" id = "csrfform" value="update_address" />
 			
 			<div id ="label">First Name</div><div id ="fieldreq"><input type="text" name="fname" style = "<?php echo (isset($error["fname"]) ? "border:2px solid red;" : null); ?>" value = "<?php echo (isset($_POST["fname"]) ? cleanDisplay($_POST["fname"]) : null); ?>" /><span class = "detail"></span><?php echo (isset($error["fname"]) ? "<p class = \"inputerror\">".$error["fname"]."</p>" : null); ?></div>
 			
