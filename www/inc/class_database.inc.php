@@ -148,6 +148,52 @@ class pdodb {
 		
 	}
 	
+	public function joinselect($table, $join=NULL, $where=NULL, $cond=NULL, $col="*", $lock=FALSE, $single=TRUE) {		
+		
+		$i			= 0;
+		$prefix 	= "sel_";
+		$bind 		= $this->bind($prefix, $where);
+		$col 		= (is_array($col) ? "`".implode("`, `",$col)."`" : $col);
+		$table		= str_replace(".","`.`",$table);
+		
+		// Start forming query
+		$sql = "SELECT ".$col." FROM `".$table."`";
+		
+		// Join statements
+		foreach ($join as $relation) {
+			
+			foreach ($relation as $attr => $val) {
+				if (($i % 2) == 0) {
+					$prevAttr = $attr;
+					$prevVal = $val;
+					$i++;
+					continue;
+				}
+				$sql .= " JOIN `".$attr."` ON `".$prevAttr."`.`".$prevVal."` = `".$attr."`.`".$val."`";
+				$prevAttr = $attr;
+				$prevVal = $val;
+				$i++;
+			}
+			
+		}		
+		
+		// Add any where arguments
+		$sql .= ($where != NULL ? " WHERE ".implode(' AND ', array_map(function ($v, $k) { return "`".$k."` = :sel_".$k.""; }, $where, array_keys($where))) : NULL);
+		// Add any conditions
+		$sql .= ($cond != NULL ? " ".implode(" ",$cond) : NULL);
+		// Add rowlock
+		$sql .= ($lock == TRUE ? " FOR UPDATE" : NULL);
+
+		// Run the query
+		$result = $this->go($sql, $bind, $single);		
+		if ($result !== NULL && $result !== FALSE) {
+			return $result;
+		}
+		
+		return false;
+		
+	}
+	
 	public function update($table, $set, $where=NULL, $cond=NULL) {
 		
 		$prefix 	= "upd_";		
