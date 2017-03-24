@@ -17,61 +17,9 @@ include ("inc/header.inc.php");
 	
 		<?php 
 		
-		$acc = $user->account_type();
+		dashnav($user->account_type());	
 		
-		// Buyer level
-		if ($acc >= 1) {
-			?>
-			<div id = "class_user">
-				
-				<ul>
-				
-					<li class = "home"><a href = "dashboard.php">Orders</a></li>
-					<li class = "home"><a href = "address.php">Address</a></li>
-					<li class = "home"><a href = "#">Wishlist</a></li>
-					<li class = "home"><a href = "password.php">Change Password</a></li>
-				
-				</ul>
-			
-			</div>
-			<?php
-		}
-		
-		// Seller level
-		if ($acc >= 2) {
-			?>
-			<div id = "class_seller">
-			
-				<ul>
-				
-					<li class = "home"><a href = "#">Pending Orders</a></li>
-					<li class = "home"><a href = "#">Listings</a></li>
-					<li class = "home"><a href = "#">Add Product</a></li>
-				
-				</ul>
-			
-			</div>
-			<?php
-		}
-		
-		// Admin Level
-		if ($acc >= 3) {
-			
-			?>
-			<div id = "class_mods">
-			
-				<ul>
-				
-					<li class = "home"><a href = "#">Approve sellers</a></li>
-					<li class = "home"><a href = "#">Approve moderators</a></li>
-				
-				</ul>
-			
-			</div>
-			<?php
-		}
-		
-		?>		
+		?>
 	
 	</div>
 	

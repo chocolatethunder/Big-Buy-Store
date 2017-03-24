@@ -52,31 +52,6 @@ function roundbalance($value, $decimals) {
 	}
 }
 
-function convertTo($value, $unit) {
-
-	$satoshi = 100000000;
-
-	switch($unit) {
-		
-		case "satoshi":
-		return (roundBalance($value,8)*$satoshi);
-		break;
-		
-		case "normal":
-		return number_format(($value/$satoshi),2);
-		break;
-		
-		case "normal-no-comma":
-		return number_format(($value/$satoshi),2,".","");
-		break;
-		
-		case "detail":
-		return number_format(($value/($satoshi)),8);
-		break;
-		
-	}
-	
-}
 
 function validateLength($data, $len) {
 	if (strlen($data) < $len) {
@@ -259,22 +234,6 @@ function get_ip_address(){
 	return false;
 }
 
-function loadinvites($num, $src=NULL) {
-	
-	$dbi = new pdodb("frontdesk");
-	
-	$sql = "INSERT INTO frontdesk.invitecode (source, code) VALUES ";
-	
-	for ($i=0; $i<$num; $i++) {		
-		if ($i==($num-1)) {
-			$sql .= "('".$src."', '".generateRandString(25)."')";
-		} else {
-			$sql .= "('".$src."', '".generateRandString(25)."'), ";
-		}
-	}
-
-	$dbi->exec($sql);	
-}
 
 function curlit($apiurl, $opts=null) {
 	
@@ -376,76 +335,57 @@ function debugarray($array) {
 	
 }
 
-function getTickerPrice($curr) {
+function dashnav ($acc) {
 	
-	global $db;
+	$user["dashboard.php"] 	= "Orders";
+	$user["address.php"] 	= "Change Address";
+	$user["wishlist.php"] 	= "Wishlist";
+	$user["password.php"] 	= "Change Password";
 	
-	$curr = strtolower($curr);
-	// This conversion is always from USD
+	$seller["pendingorders.php"] 	= "Pending Orders";
+	$seller["listings.php"] 		= "Listings";
+	$seller["addproduct.php"] 		= "Add Product";
 	
-	$stmt = "SELECT COUNT(*) FROM `beam`.`rates` WHERE `convfrom` = :from AND `convto` = :to AND `lastupdate` > DATE_SUB(NOW(),INTERVAL 10 MINUTE)";
-	$rates = $db->runquery($stmt, array(":from" => strtoupper($curr), ":to" => "USD"));
+	$mod["approve.php?type=sellers"] 	= "Approve sellers";
+	$mod["approve.php?type=mods"] 		= "Approve moderators";
 	
-	if ($rates["COUNT(*)"] == 1) {
+	// Buyer level
+	if ($acc >= 1) {
 
-		$pdata = $db->select("beam.rates", array("convfrom" => $curr, "convto" => "USD"), array("ORDER BY `lastupdate` DESC", "LIMIT 1"));
-		$usdprice = $pdata["convrate"];
-		
-	} else {
-	
-		if ($curr == "doge") {
-			//$xhangerate	= "http://pubapi.cryptsy.com/api.php?method=singlemarketdata&marketid=182";
-			$xhangerate	= "https://www.weselldoges.com/prices";
-		} else {
-			$xhangerate	= "https://btc-e.com/api/3/ticker/".$curr."_usd";
+		echo "<div id = \"class_user\"><ul>";
+
+		foreach ($user as $k => $v) {					
+			echo "<li class = \"".$k."\"><a href = \"".$k."\">".$v."</a></li>";					
 		}
 
-		$response = curlit($xhangerate);
-		
-		if ($curr == "doge") {
-			//$usdprice	= $response["return"]["markets"]["DOGE"]["lasttradeprice"];
-			$usdprice = $response["DOGE"];
-		} else {
-			$usdprice	= $response[$curr."_usd"]["last"];
-		}
-		
-		$db->insert("beam.rates", array("convfrom" => strtoupper($curr), "convto" => "USD", "convrate" => $usdprice));
-		
+		echo "</ul></div>";
 	}
-	return $usdprice;
+	
+	// Seller level
+	if ($acc >= 2) {
+		
+		echo "<div id = \"class_seller\"><ul>";
+
+		foreach ($seller as $k => $v) {					
+			echo "<li class = \"".$k."\"><a href = \"".$k."\">".$v."</a></li>";					
+		}
+
+		echo "</ul></div>";
+	}
+	
+	// Admin Level
+	if ($acc >= 3) {
+		
+		echo "<div id = \"class_mods\"><ul>";
+
+		foreach ($mod as $k => $v) {					
+			echo "<li class = \"".$k."\"><a href = \"".$k."\">".$v."</a></li>";					
+		}
+
+		echo "</ul></div>";
+	}
 	
 }
 
-function getFiatRate($from="USD",$to="CAD") {
-	
-	global $db;
-	
-	$from 	= strtoupper($from);
-	$to		= strtoupper($to);
-	
-	$stmt = "SELECT COUNT(*) FROM `beam`.`rates` WHERE `convfrom` = :from AND `convto` = :to AND `lastupdate` > DATE_SUB(NOW(),INTERVAL 10 MINUTE)";
-	$rates = $db->runquery($stmt, array(":from" => strtoupper($from), ":to" => strtoupper($to)));
-	
-	if ($rates["COUNT(*)"] == 1) {
-		
-		$pdata = $db->select("beam.rates", array("convfrom" => $from, "convto" => $to), array("ORDER BY `lastupdate` DESC", "LIMIT 1"));
-		$rate = $pdata["convrate"];
-		
-	} else {
-		
-		$convert	= "https://currencyconverter.p.mashape.com/?from=".$from."&from_amount=1&to=".$to;
-		$response	= curlit($convert, array(
-										CURLOPT_HTTPHEADER => array("X-Mashape-Key: ".MASHAPE_KEY), 
-										CURLOPT_SSL_VERIFYPEER => false,
-										CURLOPT_SSL_VERIFYHOST	=> 0
-										));
-		
-		$rate		= $response["to_amount"];
-		
-		$db->insert("beam.rates", array("convfrom" => $from, "convto" => $to, "convrate" => $rate));
-	}
-	return $rate;
-	
-}
 
 ?>
