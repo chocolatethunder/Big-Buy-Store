@@ -139,12 +139,17 @@ class registration {
 			$newuser_data = array("uname" => $this->vusername, "pass" => $this->hashpassword, "email" => $this->vemail, "datetime" => $this->dtime); 
 			$querysuccess["user_data"] = $this->dbo->insert($this->dbn."USERS", $newuser_data);
 			
-			$lastid = $this->dbo->lastinsertid; 
-			$_SESSION["uid"] = $lastid; // This is so that send verification email can log the userid
+			$newuserid = $this->dbo->lastinsertid; 
+			$_SESSION["uid"] = $newuserid; // This is so that send verification email can log the userid
 			
 			// Second query
-			$userauth_data = array("id" => $lastid, "lvl" => 1, "emailCode" => $this->emailCode);			
-			$querysuccess["user_auth"] = $this->dbo->insert($this->dbn."USERINFO", $userauth_data);			
+			$useraddr_data = array("addrid" => $newuserid);
+			$querysuccess["user_addr"] = $this->dbo->insert($this->dbn."ADDRESS",$useraddr_data );
+
+			// Third query
+			$userauth_data = array("uid" => $newuserid, "lvl" => 1, "address" => $newuserid, "emailCode" => $this->emailCode);			
+			$querysuccess["user_auth"] = $this->dbo->insert($this->dbn."USERINFO", $userauth_data);				
+			
 			
 			if (!in_array(false, array_values($querysuccess), true) == true) {				
 				$this->dbo->end();
