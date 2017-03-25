@@ -341,16 +341,20 @@ include ("inc/header.inc.php");
 		
 		<div id = "divlabel">Your current information</div>
 		
-		<?php
+		<div id = "regulartext">
 		
-		if ($user->isAddressInfoComplete()) {
-			echo $user->getUserFullNameString();
-			echo $user->getUserAddressString();
-		} else {
-			echo "No information provided.";
-		}
-		
-		?>
+			<?php
+			
+			if ($user->isAddressInfoComplete()) {
+				echo $user->getUserFullNameString();
+				echo $user->getUserAddressString();
+			} else {
+				echo "No information provided.";
+			}
+			
+			?>
+			
+		</div>
 		
 	</div>
 
