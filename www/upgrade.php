@@ -14,7 +14,7 @@ if (isset($_POST["upgrade"])) {
 				// Reload user 
 				$user = new user ($db);
 			}
-		}		
+		}
 	} else { $error["terms"] = "You must agree to the terms and conditions."; }
 }
 
@@ -71,7 +71,7 @@ include ("inc/header.inc.php");
 				<input type="hidden" name="token" value="<?php echo generateToken(30); ?>" />
 				<input type="hidden" name="form" value="upgraderequest" />
 
-				<div id ="fieldreq" style = "margin-left:20px; width:730px;"><input type="checkbox" name="terms" value="agree" id="check" /> I agree with the <a href="legal.php">terms and conditions</a> and agree to submit my user profile to be considered as a seller. For this process I consent to any amount of background checks that may be performs to ensure the quality of this website and i's services. 
+				<div id ="fieldreq" style = "margin-left:20px; width:730px;"><input type="checkbox" name="terms" value="agree" id="check" style = "margin-left:-20px;"/> I agree with the <a href="legal.php">terms and conditions</a> and agree to submit my user profile to be considered as a seller. For this process I consent to any amount of background checks that may be performs to ensure the quality of this website and i's services. 
 				<?php echo (isset($error["terms"]) ? "<p class = \"inputerror\" style = \"margin:20px 0 0 -3px;\">".$error["terms"]."</p>" : null); ?></p></div>
 				
 				<input type="submit" name="upgrade" value="Upgrade" id="submit" style = "margin-left:20px;"/>
