@@ -251,6 +251,12 @@ a:hover {
 	color:#2d3235;	
 }
 
+#regulartext {
+	font-family:"robotoregular";
+	font-size:16px;
+	line-height:22px;
+}
+
 
 /* search form */
 
@@ -444,7 +450,7 @@ input[type="submit"] {
 	outline:2px solid #03A89E;
 }
 
-#contentform  #submit, #contentform  #cancel, #contentform #make {
+#contentform  #submit, #contentform  #cancel, #contentform  #misc, #contentform #make {
 	font-family:"robotomedium";
 	background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3); /* For Safari 5.1 to 6.0 */
 	background: -o-linear-gradient(top, #f9f9f9, #e3e3e3); /* For Opera 11.1 to 12.0 */
@@ -468,7 +474,12 @@ input[type="submit"] {
 	margin:15px 0 0 15px;
 }
 
-#contentform #submit:hover, #contentform #cancel:hover, #contentform #make:hover  {
+#contentform  #misc {
+	width:125px;
+	margin:15px 0 0 15px;
+}
+
+#contentform #submit:hover, #contentform #cancel:hover, #contentform  #misc:hover, #contentform #make:hover  {
 	background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9); /* For Safari 5.1 to 6.0 */
 	background: -o-linear-gradient(top, #e3e3e3, #f9f9f9); /* For Opera 11.1 to 12.0 */
 	background: -moz-linear-gradient(top, #e3e3e3, #f9f9f9); /* For Firefox 3.6 to 15 */
@@ -512,13 +523,67 @@ select::-ms-expand {
 }
 
 #contentform #check {
-	margin:10px 0 0 -20px;
+	margin:10px 0 0 0px;
 	padding:0;
 	border:none;
 	box-shadow:none;
 	width:15px;
 	height:15px;
 	outline:none;
+}
+
+/*radio buttons */
+
+.tgglbtn { 
+    text-align:centre; 
+    margin:0;
+    padding:3px 6px; 
+    color:#2d3235; 
+    background-color:#FFFFFF;  
+    display:inline-block;  
+    cursor:pointer;
+	border:1px solid #CCCCCC;
+}
+
+
+#radiocheck_md * {
+	width:85px;
+    height:30px;
+    line-height:30px;
+	margin:0;
+	padding:0;
+}
+
+#radiocheck_md div {
+    display:inline-block;
+    position:relative;
+    margin:0;
+	padding:0;
+}
+
+#radiocheck_md div label {
+    position:absolute;
+    z-index:0;
+    padding:0;
+    text-align:center;
+}
+
+#radiocheck_md div input {
+    position:absolute;
+    z-index:1;
+    cursor:pointer;
+    opacity:0;
+	width:100px;
+}
+
+#radiocheck_md div:hover label {
+    background:#F3F3F3;
+}
+
+#radiocheck_md div input:checked + label {
+	color:#FFFFFF;
+    background:#03A89E;
+	border:1px solid #03A89E;
 }
 
 /* status css */
@@ -565,5 +630,3 @@ select::-ms-expand {
 	background-image:url('../img/icon_good.png');
 	color:#458B00;
 }
-
-/* helper buttons */
