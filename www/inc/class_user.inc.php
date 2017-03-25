@@ -29,8 +29,12 @@ class user {
 		return false;
 	}
 	
-	public function account_type() {		
-		return $this->udata["lvl"];
+	public function account_type() {
+		if (login::loginCheck() == true) {		
+			return $this->udata["lvl"];
+		} else {
+			login::logout();
+		}
 	}
 	
 	public function getuid() {
