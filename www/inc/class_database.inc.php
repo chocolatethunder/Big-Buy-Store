@@ -119,6 +119,7 @@ class pdodb {
 			//$code = $query->errorInfo();
 			//$this->ecode = ("CODE: ".$code[1]);
 			echo "ERRORS: ".$e->getMessage();
+			echo "<br/>".$sql;
 		}
 		return false;	
 	}
