@@ -19,12 +19,14 @@ $loadpage = "add";
 $ldata = null;
 
 // Check actions
-if (isset($_GET["action"])) {
+if (isset($_GET["action"]) && !empty($_GET["action"]) && isset($_GET["id"]) && !empty($_GET["id"])) {
 	$type = prep($_GET["action"],"a");
 	$pattern = "/^(edit|delete)$/";
 	if (preg_match($pattern, $type) == true) {
 		$loadpage = $type; 
 	}
+} else {
+	gotoPage("dashboard.php");
 }
 
 if ($loadpage == "delete") {	
