@@ -28,7 +28,7 @@
 				
 				<ul>
 				
-					<li class = "home"><a href = "index.php">Home</a></li>
+					<li class = "home"><a href = "index.php">Marketplace</a></li>
 					<li class = "dash"><a href = "dashboard.php">Dashboard</a></li>
 					<li class = "cart"><a href = "cart.php">Cart</a></li>
 					<li class = "logout"><a href = "login.php">Logout</a></li>

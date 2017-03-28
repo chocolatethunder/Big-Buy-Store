@@ -4,6 +4,7 @@
 $file = "home";
 include ("inc/classload.inc.php");
 
+// Get all the products
 $listings = $db->joinselect("MasterDB."."LISTS", array(array("LISTS" => "listedProd", "PRODUCT" => "pid"), array("PRODUCT" => "department", "DEPARTMENT" => "deptid")));
 
 // Include header template
