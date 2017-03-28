@@ -67,6 +67,24 @@ class security {
 			$allowed["add_dept"] = "";
 			break;	
 			
+			case "addproduct":
+			$allowed["dept"] = "";
+			$allowed["pname"] = "";
+			$allowed["desp"] = "";
+			$allowed["qty"] = "";
+			$allowed["price"] = "";
+			$allowed["add_product"] = "";
+			break;
+			
+			case "editproduct":
+			$allowed["dept"] = "";
+			$allowed["pname"] = "";
+			$allowed["desp"] = "";
+			$allowed["qty"] = "";
+			$allowed["price"] = "";
+			$allowed["edit_product"] = "";
+			break;	
+			
 			// default is always false
 			default:
 			return false;

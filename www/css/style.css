@@ -151,6 +151,7 @@ a:hover {
 
 #maincontent {
 	width:65%;
+	min-width:1100px;
 	margin: 100px auto 0 auto;
 	padding:20px;	
 	background-color:#FFFFFF;
@@ -238,6 +239,7 @@ a:hover {
 	float:left;
 	padding:35px;
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+	width:750px;
 }
 
 #submenu {
@@ -446,7 +448,24 @@ input[type="submit"] {
 	box-shadow:inset 0px 1px 4px #999999;
 }
 
+#contentform #txtArea {
+	width:350px;
+	height:100px;
+	background-color:#FFFFFF;
+	border:none;
+	padding:0 7px;
+	border:2px solid #FFFFFF;	
+	font-family:"robotoregular";
+	font-size:16px;
+	color:#2d3235;	
+	box-shadow:inset 0px 1px 4px #999999;
+}
+
 #contentform input:focus {
+	outline:2px solid #03A89E;
+}
+
+#contentform #txtArea:focus {
 	outline:2px solid #03A89E;
 }
 
@@ -630,3 +649,77 @@ select::-ms-expand {
 	background-image:url('../img/icon_good.png');
 	color:#458B00;
 }
+
+/* table formatting */
+
+#listings {	
+	width:750px;
+	margin:0 auto;	}
+
+#listings td {
+	padding:10px 0;
+	text-align:left;
+	font-size:18px;
+	border: 1px solid #f3f3f3;
+	font-family:"robotoregular";
+}
+
+#listings td a{
+	text-decoration:none;
+	color:#32c3f3;
+	font-family:"robotobold";
+}
+
+#listings td a:hover{
+	color:#666666;
+}
+
+#listings th {
+	padding:15px 0px;
+	font-size:18px;
+	background-color:#F3F3F3;
+}
+
+
+#listings td#pid {
+	font-family:'robotobold';
+	width:65px;
+	text-align:center;
+}
+
+#listings td#pname {
+	width:260px;
+	text-align:left;
+	padding-left:20px;
+}
+
+#listings td#price {
+	width:120px;
+	padding-right:20px;
+	text-align:right;
+}
+
+#listings td#units {
+	width:50px;
+	padding-right:20px;
+	text-align:right;
+}
+
+#listings td#datetime {
+	width:130px;
+	text-align:center;
+}
+
+#listings td#delete {
+	width:40px;
+	text-align:center;
+}
+
+#remove {	
+	background-repeat:no-repeat;
+	width:25px;
+	height:25px;
+	margin:5px auto;
+	background-image:url('../img/icon_error.png');
+}
+
