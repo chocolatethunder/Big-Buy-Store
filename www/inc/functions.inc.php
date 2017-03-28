@@ -351,7 +351,8 @@ function dashnav ($acc) {
 	$seller["addproduct.php"] 		= "Add Product";
 	
 	$mod["approve.php?type=sellers"] 	= "Approve sellers";
-	$mod["approve.php?type=moderators"] 		= "Approve moderators";
+	$mod["approve.php?type=moderators"] = "Approve moderators";
+	$mod["departments.php"] 			= "Manage Departments";
 	
 	// Buyer level
 	if ($acc >= 1) {

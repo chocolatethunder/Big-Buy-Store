@@ -60,7 +60,12 @@ class security {
 			case "upgraderequest":
 			$allowed["terms"] = "";
 			$allowed["upgrade"] = "";
-			break;			
+			break;
+
+			case "adddeptname":
+			$allowed["dname"] = "";
+			$allowed["add_dept"] = "";
+			break;	
 			
 			// default is always false
 			default:

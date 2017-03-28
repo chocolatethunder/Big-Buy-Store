@@ -1,9 +1,14 @@
 <?php
 
-class moderator extends user {	
+include ("inc/class_seller.inc.php");
+
+class moderator extends seller {	
 	
 	private $dbo;
 	private $dbn;
+	
+	private $deptname;
+	private $vdeptname;
 	
 	function __construct($db) {
 		
@@ -75,6 +80,46 @@ class moderator extends user {
 			return true;
 		}
 		return false;		
+	}
+	
+	function validateDeptName() {
+		
+		global $error;
+		
+		if (isset($this->deptname) && !empty($this->deptname)) {			
+			$dname = $this->deptname;
+			if (preg_match("/^[a-zA-Z0-9 ]+$/", $dname)) {
+				if (strlen($dname) < 20) {				
+					$this->dbo->select($this->dbn."DEPARTMENT", array("deptname"=>$dname));
+					if ($this->dbo->rowcount == 0) {
+						$this->vdeptname = $dname;
+						return true;
+					} else { $error["dname"] = "Department already exists"; }		
+				} else { $error["dname"] = "Department name is too long"; }
+			} else { $error["dname"] = "Alphabets, numbers and spaces only"; }
+		} else { $error["dname"] = "Department name cannot be blank"; }
+		
+		return false;
+	}
+	
+	function addDepartment($dept) {
+		
+		global $securityCheck, $error; // Refer to class_security.php
+		
+		$this->deptname = $dept;
+		
+		$validate = array();
+		$validate[] = $this->validateDeptName();
+		
+		if (!in_array(false, $validate, true) == true) {
+			if ($securityCheck->checkForm($_POST["form"]) == true) {				
+				if ($this->dbo->insert($this->dbn."DEPARTMENT", array("deptname" => $this->vdeptname))) {
+					return true;
+				}				
+			} else { $error["form"] = "Uh-oh! Something went wrong. Please try again."; }
+		}
+		return false;		
+
 	}
 
 }
