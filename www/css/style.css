@@ -58,19 +58,28 @@ body {
 	margin:0 -5px;
 }
 
-/*
-#menu ul li.home {
-	background-image:url('../img/icon_home.png');	
+
+#menu ul li.market {
+	background-image:url('../img/icon_market.png');	
 }
+#menu ul li.dash {
+	background-image:url('../img/icon_dash.png');	
+}
+#menu ul li.cart {
+	background-image:url('../img/icon_cart.png');	
+}
+#menu ul li.logout {
+	background-image:url('../img/icon_logout.png');	
+}
+
 
 #menu ul li.login {
 	background-image:url('../img/icon_login.png');	
 }
-
 #menu ul li.signup {
 	background-image:url('../img/icon_signup.png');	
 }
-*/
+
 
 #menu ul li a {
 	text-decoration:none;
