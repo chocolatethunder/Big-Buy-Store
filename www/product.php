@@ -1,10 +1,17 @@
 <?php
 
 // Load classes
-$file = "home";
+$file = preg_replace('/\.php$/', '', basename(__FILE__));
 include ("inc/classload.inc.php");
 
-
+if (isset($_GET["id"]) && !empty($_GET["id"])) {
+	$prod = new product($db, $_GET["id"]);	
+	if (!$prod->isOpen()) {
+		gotoPage("index.php");
+	}	
+} else {
+	gotoPage("index.php");
+}
 
 // Include header template
 include ("inc/header.inc.php");
@@ -16,7 +23,32 @@ include ("inc/header.inc.php");
 	
 	<div id = "productwindow">	
 		
+		<?php 
 		
+		echo "<div id = \"listImg\"><img src = \"img/default.png\" /></div>";
+		echo "<div id = \"listTitle\"><p>".$prod->getTitle()."</p></div>";
+		echo "<div id = \"listDetail\"><span class = \"prefix\">Sold by: </span><span class = \"suffix\"> ".$prod->getSeller()."</span></div>";
+		echo "<div id = \"listDetail\"><span class = \"prefix\">Listed on: </span><span class = \"suffix\"> ".toDate($prod->getlistingDate(), true)."</span></div>";
+		echo "<div id = \"listDetail\"><span class = \"prefix\">Units Left: </span><span class = \"suffix\"> ".$prod->getQuantity()."</span></div>";
+		echo "<a href =\"#\"><div id = \"addToCart\">Add to cart</div></a>";
+		
+		?>
+	
+	</div>
+	
+	<br/>
+	
+	<div id = "productwindow">	
+		
+		<div id = "divlabel">Reviews</div>
+	
+	</div>
+	
+	<br/>
+	
+	<div id = "productwindow">	
+		
+		<div id = "divlabel">Products that may interest you</div>
 	
 	</div>
 	

@@ -326,15 +326,6 @@ a:hover {
 	font-size:16px;	
 }
 
-#productwindow {
-	display:table;
-	padding:35px;
-	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
-	width:725px;
-	margin:0 auto;
-}
-
-
 #submenu {
 	float:left;
 }
@@ -821,5 +812,71 @@ select::-ms-expand {
 
 #edit {
 	background-image:url('../img/icon_edit.png');
+}
+
+/* product page css */
+
+#productwindow {
+	display:table;
+	padding:35px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+	width:800px;
+	margin:0 auto;
+	color: #2d3235;
+}
+
+#productwindow #listImg {
+	display:table-cell;
+	float:left;
+	margin:0 20px 0 0;
+	padding:0px;
+}
+
+#productwindow #listTitle {
+	width:100%;
+	margin:0;
+	padding:0;
+}
+
+#listTitle p {
+	font-size:32px;
+	font-family:"robotobold";
+	padding:0;
+	margin:0;
+}
+
+#listDetail .prefix {
+	display:inline-block;
+	font-size:15px;
+	font-family:"robotobold";
+	padding:0;
+	margin:5px 0 0 0;
+	width:80px;
+}
+
+#listDetail .suffix  {
+	display:inline-block;
+	font-size:15px;
+	font-family:"robotoregular";
+	padding:0;
+	margin:5px 0 0 0;	
+}
+
+#addToCart {
+	display:inline-block;
+	width:100px;
+	margin:16px 0 0 0;
+	padding:7px 5px;
+	background-color:#03A89E;
+	color:#FFFFFF;
+	text-align:center;
+	border-radius:5px;
+	border: 2px solid #03A89E;
+	font-family:"robotobold";
+}
+
+#addToCart:hover {
+	background-color:#FFFFFF;
+	color:#03A89E;
 }
 
