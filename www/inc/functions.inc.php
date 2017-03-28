@@ -352,7 +352,7 @@ function dashnav ($acc) {
 	
 	$mod["approve.php?type=sellers"] 	= "Approve sellers";
 	$mod["approve.php?type=moderators"] = "Approve moderators";
-	$mod["departments.php"] 			= "Manage Departments";
+	$mod["departments.php"] 			= "Add New Department";
 	
 	// Buyer level
 	if ($acc >= 1) {
