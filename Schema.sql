@@ -51,7 +51,7 @@ CREATE TABLE USERINFO (
 	uid INTEGER(9),
 	fname VARCHAR(50),
 	lname VARCHAR(50),
-	lvl INTEGER(3),
+	lvl INTEGER(3) DEFAULT 1,
 	address INTEGER(9),
 	emailCode VARCHAR(150),
 	UNIQUE (uid),
