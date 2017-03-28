@@ -1,5 +1,9 @@
 <?php
 
+// SELECT * FROM `PRODREVIEWS` LEFT JOIN `ORDERITEMS` ON `PRODREVIEWS`.`product` = `ORDERITEMS`.`contains` JOIN `ORDERS` ON `ORDERITEMS`.`orderid` = `ORDERS`.`oid`;
+
+// IF reviewer == uid then verified owner
+
 class product {
 	
 	private $dbo;
@@ -39,6 +43,17 @@ class product {
 		return $this->listingData["units"];
 	}
 	
+	public function getDescription() {
+		return $this->listingData["description"];
+	}
+	
+	public function getProdId() {
+		return $this->listingData["listedProd"];
+	}
+
+	public function getPrice() {
+		return $this->listingData["price"];
+	}
 }
 
 ?>

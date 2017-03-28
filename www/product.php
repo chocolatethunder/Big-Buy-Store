@@ -26,11 +26,20 @@ include ("inc/header.inc.php");
 		<?php 
 		
 		echo "<div id = \"listImg\"><img src = \"img/default.png\" /></div>";
+		
+		
+		echo "<a href =\"cart.php?action=add&id=".$prod->getProdId()."\"><div id = \"addToCart\">Add to cart</div></a>";
+		
 		echo "<div id = \"listTitle\"><p>".$prod->getTitle()."</p></div>";
+		
+		
+		echo "<div id = \"listPrice\"><p>$".$prod->getPrice()."</p></div>";
 		echo "<div id = \"listDetail\"><span class = \"prefix\">Sold by: </span><span class = \"suffix\"> ".$prod->getSeller()."</span></div>";
 		echo "<div id = \"listDetail\"><span class = \"prefix\">Listed on: </span><span class = \"suffix\"> ".toDate($prod->getlistingDate(), true)."</span></div>";
 		echo "<div id = \"listDetail\"><span class = \"prefix\">Units Left: </span><span class = \"suffix\"> ".$prod->getQuantity()."</span></div>";
-		echo "<a href =\"#\"><div id = \"addToCart\">Add to cart</div></a>";
+		
+		
+		echo "<div id = \"listDesp\"><p>".$prod->getDescription()."</p></div>";
 		
 		?>
 	
