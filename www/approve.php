@@ -126,7 +126,7 @@ include ("inc/header.inc.php");
 			
 			} else {
 				
-				$_SESSION["caution"] = "There are no users waiting to be approved";
+				$_SESSION["caution"] = "There are no seller applications waiting to be approved.";
 				errorhandler();
 				
 			}
@@ -178,7 +178,7 @@ include ("inc/header.inc.php");
 			
 			} else {
 				
-				$_SESSION["caution"] = "There are no users waiting to be approved";
+				$_SESSION["caution"] = "There are no moderator applications waiting to be approved.";
 				errorhandler();
 				
 			}
