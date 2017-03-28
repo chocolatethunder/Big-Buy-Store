@@ -60,7 +60,7 @@ include ("inc/header.inc.php");
 				foreach ($listings as $item) {
 					
 					echo "<tr>";
-					echo	"<td id = \"pid\" data-title=\"\"><a href = \"addproduct.php?action=edit&id=".$item["adId"]."\">Edit</a></td>";
+					echo	"<td id = \"pid\" data-title=\"\"><a href = \"addproduct.php?action=edit&id=".$item["adId"]."\"><div id =\"edit\"></div></a></td>";
 					echo 	"<td id = \"pname\" data-title=\"Name\">".$item["pname"]."</td>";
 					echo	"<td id = \"price\" data-title=\"Price\">$".$item["price"]."</td>";
 					echo	"<td id = \"units\" data-title=\"Price\">".$item["units"]."</td>";
