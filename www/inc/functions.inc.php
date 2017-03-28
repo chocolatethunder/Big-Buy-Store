@@ -343,7 +343,6 @@ function dashnav ($acc) {
 	
 	$user["dashboard.php"] 	= "Orders";
 	$user["address.php"] 	= "Change Address";
-	$user["wishlist.php"] 	= "Wishlist";
 	$user["password.php"] 	= "Change Password";
 	
 	$seller["pendingorders.php"] 	= "Pending Orders";
