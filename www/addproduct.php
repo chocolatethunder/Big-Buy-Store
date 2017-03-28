@@ -25,8 +25,6 @@ if (isset($_GET["action"]) && !empty($_GET["action"]) && isset($_GET["id"]) && !
 	if (preg_match($pattern, $type) == true) {
 		$loadpage = $type; 
 	}
-} else {
-	gotoPage("dashboard.php");
 }
 
 if ($loadpage == "delete") {	

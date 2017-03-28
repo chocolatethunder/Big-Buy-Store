@@ -136,7 +136,7 @@ class registration {
 			$this->dbo->start();			
 			
 			// First query
-			$newuser_data = array("uname" => $this->vusername, "pass" => $this->hashpassword, "email" => $this->vemail, "datetime" => $this->dtime); 
+			$newuser_data = array("uname" => $this->vusername, "pass" => $this->hashpassword, "email" => $this->vemail, "joinedOn" => $this->dtime); 
 			$querysuccess["user_data"] = $this->dbo->insert($this->dbn."USERS", $newuser_data);
 			
 			$newuserid = $this->dbo->lastinsertid; 
