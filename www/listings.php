@@ -73,7 +73,7 @@ include ("inc/header.inc.php");
 			
 			?>
 			
-						</tbody>
+					</tbody>
 				</table>
 			
 			<?php
