@@ -39,6 +39,8 @@ include ("inc/header.inc.php");
 			?>
 			<br/>
 			
+			<div id = "divlabel">Your Marketplace Listings</div>
+			
 			<table id="listings">
 					<thead>
 						<tr>
@@ -58,8 +60,7 @@ include ("inc/header.inc.php");
 				foreach ($listings as $item) {
 					
 					echo "<tr>";
-					echo	"<td id = \"pid\" data-title=\"\"><a href = \"addproduct.php?action=edit&id=".$item["adId"]."
-					\">".$item["adId"]."</a></td>";
+					echo	"<td id = \"pid\" data-title=\"\"><a href = \"addproduct.php?action=edit&id=".$item["adId"]."\">Edit</a></td>";
 					echo 	"<td id = \"pname\" data-title=\"Name\">".$item["pname"]."</td>";
 					echo	"<td id = \"price\" data-title=\"Price\">$".$item["price"]."</td>";
 					echo	"<td id = \"units\" data-title=\"Price\">".$item["units"]."</td>";
