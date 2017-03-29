@@ -54,6 +54,10 @@ class product {
 	public function getPrice() {
 		return $this->listingData["price"];
 	}
+	
+	public function getListingId() {
+		return $this->listId;
+	}
 }
 
 ?>
