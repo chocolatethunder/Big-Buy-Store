@@ -130,7 +130,7 @@ class login {
 				
 				$sessionid = session_id();				
 				
-				gotoPage("dashboard.php");
+				//gotoPage("dashboard.php");
 				return true;
 			}
 	
