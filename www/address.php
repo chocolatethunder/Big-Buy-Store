@@ -54,7 +54,7 @@ include ("inc/header.inc.php");
 		
 		<div id = "divlabel">Update your address</div>
 		
-		<?php errorhandler(); ?>
+		<?php errorhandler(); echo "<br/>"; ?>
 	
 		<form action="address.php" method="post" id = "contentform">
 
