@@ -91,6 +91,16 @@ body {
 	border-bottom:3px #03A89E solid;
 }
 
+#cartitems {
+	font-family:"robotobold";
+	font-size:14px;
+	padding:3px 8px;
+	border-radius:10px;
+	display:inline;
+	background-color:#03A89E;
+	color:#FFFFFF;
+}
+
 #welcomemsg {
 	font-family:'robotoregular';
 	font-size:16px;

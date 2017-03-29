@@ -30,7 +30,7 @@
 				
 					<li class = "market"><a href = "index.php">Marketplace</a></li>
 					<li class = "dash"><a href = "dashboard.php">Dashboard</a></li>
-					<li class = "cart"><a href = "cart.php">Cart<?php echo ($user->getNumOfItemsInCart()) ? " (".$user->getNumOfItemsInCart().")" : null ; ?></a></li>
+					<li class = "cart"><a href = "cart.php">Cart<?php echo ($user->getNumOfItemsInCart()) ? " <span id = \"cartitems\">".$user->getNumOfItemsInCart()."</span>" : null ; ?></a></li>
 					<li class = "logout"><a href = "login.php">Logout</a></li>
 				
 				</ul>
