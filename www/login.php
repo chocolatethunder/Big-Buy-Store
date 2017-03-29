@@ -12,7 +12,14 @@ if (login::loginCheck() == true) {
 if (isset($_POST["login"])) {			
 	$error = array();	
 	if ($securityCheck->checkForm($_POST["form"]) == true) {		
-		$login = new login($db, $_POST["uname"], $_POST["pass"]);		
+		$login = new login($db, $_POST["uname"], $_POST["pass"]);
+		if (login::loginCheck() == true) {
+			if (isset($_GET["redirect"]) && !empty($_GET["redirect"])) {
+				gotoPage($_GET["redirect"]);
+			} else {
+				gotoPage("dashboard.php");
+			}
+		}
 	}
 }
 
@@ -32,7 +39,11 @@ include ("inc/header.inc.php");
 	
 	<?php errorhandler(); ?>
 		
-	<form action="login.php" method="post" id="nonauthform">  
+	<form action="login.php<?php 
+	
+		if (isset($_GET["redirect"]) && !empty($_GET["redirect"])) {
+			echo "?redirect=".urlencode($_GET["redirect"]);
+		}?>" method="post" id="nonauthform">  
 
 		<input type="hidden" name="token" value="<?php echo generateToken(30); ?>" />
 		<input type="hidden" name="form" value="login" />

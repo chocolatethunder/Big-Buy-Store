@@ -32,7 +32,9 @@ $publicpages = array ("login","signup","search","home","product");
 if (in_array($file, $publicpages, true) == false) {	
 
 	if (login::loginCheck() == false) {
-		login::logout();	
+		$path = explode("/",$_SERVER['REQUEST_URI']);
+		gotoPage("login.php?redirect=".urlencode($path[2]));
+		//login::logout();	
 	}
 
 }
