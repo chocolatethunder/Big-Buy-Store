@@ -147,6 +147,14 @@ class user {
 		$this->dbo->update($this->dbn."SHOPPINGCART", array("items" => NULL), array("belongsto" => $this->getuid()));
 	}
 	
+	public function getNumOfItemsInCart() {
+		$cart = $this->getCart();
+		if (count($cart) > 0 && !empty($cart)) {
+			return count($cart);
+		}
+		return null;
+	}
+	
 }
 
 ?>
