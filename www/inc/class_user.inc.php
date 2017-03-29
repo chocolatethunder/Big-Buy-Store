@@ -133,6 +133,20 @@ class user {
 		return false;
 	}
 	
+	public function getCart() {		
+		$data = $this->dbo->select($this->dbn."SHOPPINGCART", array("belongsto" => $this->getuid()));
+		return unserialize($data["items"]);		
+	}
+	
+	public function setCart($data) {
+		$cdata = serialize($data);
+		$this->dbo->update($this->dbn."SHOPPINGCART", array("items" => $cdata), array("belongsto" => $this->getuid()));
+	}
+	
+	public function clearCart() {
+		$this->dbo->update($this->dbn."SHOPPINGCART", array("items" => NULL), array("belongsto" => $this->getuid()));
+	}
+	
 }
 
 ?>
