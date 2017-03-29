@@ -28,7 +28,7 @@ include ("inc/header.inc.php");
 		echo "<div id = \"listImg\"><img src = \"img/default.png\" /></div>";
 		
 		
-		echo "<a href =\"cart.php?action=add&id=".$prod->getProdId()."\"><div id = \"addToCart\">Add to cart</div></a>";
+		echo "<a href =\"cart.php?action=add&id=".$prod->getListingId()."\"><div id = \"addToCart\">Add to cart</div></a>";
 		
 		echo "<div id = \"listTitle\"><p>".$prod->getTitle()."</p></div>";
 		
