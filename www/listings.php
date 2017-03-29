@@ -29,12 +29,12 @@ include ("inc/header.inc.php");
 	<br/>
 	
 	<div id = "displaywindow">
-		
-		<?php errorhandler(); ?>
-
+	
 		<?php
 			
 			if ($listings) {
+				
+				errorhandler();
 				
 			?>
 			<br/>
