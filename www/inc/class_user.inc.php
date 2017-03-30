@@ -155,6 +155,10 @@ class user {
 		return null;
 	}
 	
+	public function cartCheckout(){
+		return true;
+	}
+	
 }
 
 ?>

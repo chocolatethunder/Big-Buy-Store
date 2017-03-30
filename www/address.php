@@ -24,7 +24,16 @@ if (isset($_POST["submit_address"])) {
 
 	if ($updateaddr->processData() == true) {
 		$_SESSION["success"] = "Personal Info Saved.";
+		
+		// Checkout redirect
+		if (isset($_SESSION["checkout"]) && $_SESSION["checkout"] == true) {
+			unset($_SESSION["checkout"]);
+			gotoPage("cart.php");
+		}
+		
+		// Clear post data
 		$_POST = array();
+		
 		// Reload the user class
 		$user = new user ($db);
 	}
