@@ -27,7 +27,8 @@ if ($acc == 1) {
 	if ($user->isAddressInfoComplete()) {
 		$continue = true;
 	} else {
-		$_SESSION["caution"] = "Please go to Change Address and complete your address information first.";
+		$_SESSION["caution"] = "Please complete your address information before you apply to be a seller.";
+		gotoPage("address.php");
 	}
 	
 	if ($user->userPendingUpgrade()) {
