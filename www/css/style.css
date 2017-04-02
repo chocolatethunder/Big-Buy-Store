@@ -810,6 +810,38 @@ select::-ms-expand {
 	text-align:center;
 }
 
+/* get orders table */
+
+#listings td#invoice {
+	width:100px;
+	text-align:center;
+}
+
+#listings td#orderplaced {
+	width:250px;
+	text-align:left;
+	padding-left:20px;
+}
+
+#listings td#items {
+	width:100px;
+	text-align:center;
+}
+
+#listings td#total {
+	width:200px;
+	padding-right:20px;
+	text-align:right;
+}
+
+#listings td#orderstatus {
+	width:100px;
+	text-align:center;
+}
+
+
+/* remove edit buttons */
+
 #remove, #edit {	
 	background-repeat:no-repeat;
 	width:25px;
@@ -903,6 +935,24 @@ select::-ms-expand {
 #addToCart:hover {
 	background-color:#FFFFFF;
 	color:#03A89E;
+}
+
+#soldOut {
+	float:right;
+	width:100px;
+	margin:0 0 0 0;
+	padding:7px 5px;
+	background-color:#FF7D40;
+	color:#FFFFFF;
+	text-align:center;
+	border-radius:5px;
+	border: 2px solid #FF7D40;
+	font-family:"robotobold";
+}
+
+#soldOut:hover {
+	background-color:#FFFFFF;
+	color:#FF7D40;
 }
 
 #productwindow #listDesp {
