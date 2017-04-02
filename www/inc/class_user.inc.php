@@ -133,6 +133,8 @@ class user {
 		return false;
 	}
 	
+	// Commerce section. This should've been a separate class
+	
 	public function getCart() {		
 		$data = $this->dbo->select($this->dbn."SHOPPINGCART", array("belongsto" => $this->getuid()));
 		return unserialize($data["items"]);		
@@ -155,8 +157,84 @@ class user {
 		return null;
 	}
 	
-	public function cartCheckout(){
-		return true;
+	public function cartCheckout($post){
+		
+		global $error;
+		
+		// load user cart into array
+		$buyItems = $this->getCart();
+		// check if each product has qty available
+		foreach ($buyItems as $item) {
+			// load new product
+			$i = new Product($this->dbo, $item);
+			// check if its listing is still available
+			if ($i->isOpen()) {
+				// check quantities
+				if ($post[$item] > $i->getQuantity()) {
+					$error[$item] = "Not enough product quantities available.";
+				}
+			}
+			
+		}
+		
+		if (!empty($error)) {
+			return false;
+		}		
+		
+		$this->dbo->start();
+		
+		// insert a new row in the orders table
+		$querysuccess["orderinsert"] = $this->dbo->insert($this->dbn."ORDERS", array("uid" => $this->getuid(), "invoiceid" => randomNumber(6), "orderDate" => date("Y-m-d H:i:s"), "shipAddr" => $this->getUserData("address"), "ordstatus" => "Placed"));
+		
+		// get the last insert id
+		$orderid = $this->dbo->lastinsertid;
+		
+		
+		foreach ($buyItems as $item) {
+			$i = new Product($this->dbo, $item);
+			if ($i->isOpen()) {
+				// insert rows for each item and their price into the orderitems table
+				$querysuccess["orderitem".$item] = $this->dbo->insert($this->dbn."ORDERITEMS", array("orderid" => $orderid, "contains" => $item, "price" => $i->getPrice(), "seller" => $i->getSellerId()));
+				// subtract the bought amount from the sellers inventory
+				$querysuccess["subtractitem".$item] = $i->subtractQty(prep($post[$item], "n"));
+			}
+		}		
+		
+		if (!in_array(false, array_values($querysuccess), true) == true) {				
+			$this->dbo->end();
+			// clear the user cart
+			$this->clearCart();
+			return true;
+		}
+		
+		$this->dbo->rollback();		
+		
+		return false;
+		
+	}
+	
+	public function getOrders() {
+		
+		$orderdata = $this->dbo->select($this->dbn."ORDERS", array("uid" => $this->getuid()), NULL, "*", FALSE, FALSE);
+		
+		if (!empty($orderdata)) {
+			$i = 0;		
+			foreach ($orderdata as $ord) {
+				$orderTotal = $this->dbo->select($this->dbn."ORDERITEMS", array("orderid" => $ord["oid"]), NULL, "SUM(price), COUNT(*)");
+				$orderdata[$i]["total"] = $orderTotal["SUM(price)"];
+				$orderdata[$i]["count"] = $orderTotal["COUNT(*)"];
+				$i++;
+			}			
+			return $orderdata;
+		}
+		
+		return null;		
+	}
+	
+	public function getOrderData($orderid) {
+		
+		$oid = prep($orderid,"n");
+		
 	}
 	
 }
