@@ -35,6 +35,10 @@ class product {
 		return $seller["uname"];
 	}
 	
+	public function getSellerId() {
+		return $this->listingData["listedBy"];
+	}
+	
 	public function getListingDate() {
 		return $this->listingData["addedon"];
 	}
@@ -58,6 +62,14 @@ class product {
 	public function getListingId() {
 		return $this->listId;
 	}
+	
+	public function subtractQty($qty=1) {
+		if ($this->dbo->update($this->dbn."LISTS", array("units" => $this->getQuantity()-$qty), array("adId" => $this->getListingId()))) {
+			return true;
+		}
+		return false;
+	}
+	
 }
 
 ?>
