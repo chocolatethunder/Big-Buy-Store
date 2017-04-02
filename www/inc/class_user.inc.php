@@ -194,7 +194,7 @@ class user {
 			$i = new Product($this->dbo, $item);
 			if ($i->isOpen()) {
 				// insert rows for each item and their price into the orderitems table
-				$querysuccess["orderitem".$item] = $this->dbo->insert($this->dbn."ORDERITEMS", array("orderid" => $orderid, "contains" => $item, "price" => $i->getPrice(), "seller" => $i->getSellerId()));
+				$querysuccess["orderitem".$item] = $this->dbo->insert($this->dbn."ORDERITEMS", array("orderid" => $orderid, "contains" => $item, "unitprice" => $i->getPrice(), "units" => prep($post[$item], "n"), "totalunitprice" => ($i->getPrice() * prep($post[$item], "n")), "seller" => $i->getSellerId()));
 				// subtract the bought amount from the sellers inventory
 				$querysuccess["subtractitem".$item] = $i->subtractQty(prep($post[$item], "n"));
 			}
@@ -220,8 +220,8 @@ class user {
 		if (!empty($orderdata)) {
 			$i = 0;		
 			foreach ($orderdata as $ord) {
-				$orderTotal = $this->dbo->select($this->dbn."ORDERITEMS", array("orderid" => $ord["oid"]), NULL, "SUM(price), COUNT(*)");
-				$orderdata[$i]["total"] = $orderTotal["SUM(price)"];
+				$orderTotal = $this->dbo->select($this->dbn."ORDERITEMS", array("orderid" => $ord["oid"]), NULL, "SUM(totalunitprice), COUNT(*)");
+				$orderdata[$i]["total"] = $orderTotal["SUM(totalunitprice)"];
 				$orderdata[$i]["count"] = $orderTotal["COUNT(*)"];
 				$i++;
 			}			
@@ -235,6 +235,23 @@ class user {
 		
 		$oid = prep($orderid,"n");
 		
+		if ($this->isUsersOrder($oid)) {
+			$orderdata = $this->dbo->joinselect($this->dbn."ORDERITEMS", array( array("ORDERITEMS" => "orderid", "ORDERS" => "oid")), array("orderid" => $oid), NULL, "*", FALSE, FALSE);
+			return $orderdata;
+		}
+		return false;
+	}
+	
+	public function isUsersOrder($orderid) {
+		
+		$oid = prep($orderid,"n");
+		$asUser = $this->dbo->select($this->dbn."ORDERS", array("uid" => $this->getuid(), "oid" => $oid), NULL, "*", FALSE, FALSE);
+		$asSeller = $this->dbo->select($this->dbn."ORDERITEMS", array("orderid" => $oid, "seller" => $this->getuid()), NULL, "*", FALSE, FALSE);
+		
+		if (!empty($asUser) || !empty($asSeller)) {
+			return true;
+		}
+		return false;
 	}
 	
 }
