@@ -92,7 +92,7 @@ class seller extends user {
 	
 	public function validatePrice() {
 		global $error;		
-		if (isset($this->price) && !empty($this->price) && $this->qty > 0) { // check for value set		
+		if (isset($this->price) && !empty($this->price) && $this->price > 0) { // check for value set		
 			$price = $this->price;
 			if (preg_match("/^[0-9]+(?:\.[0-9]{2}){0,1}$/", $price)) {			
 				$this->vprice = $this->price;
