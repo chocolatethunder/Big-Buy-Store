@@ -16,6 +16,11 @@ class product {
 		$this->dbo = $db;
 		$this->listId = prep($id,"n");
 		$this->dbn = "MasterDB.";
+		$this->loadData();
+	}
+	
+	public function loadData() {
+		$this->listingData = $this->dbo->joinselect($this->dbn."LISTS", array(array("LISTS" => "listedProd", "PRODUCT" => "pid"), array("PRODUCT" => "department", "DEPARTMENT" => "deptid")), array("adId" => $this->listId));
 	}
 	
 	public function isOpen() {
