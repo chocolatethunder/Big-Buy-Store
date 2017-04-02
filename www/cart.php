@@ -37,9 +37,10 @@ if (isset($_GET["action"]) && $_GET["action"] == "add" && isset($_GET["id"]) && 
 
 // Process Checkout
 if (isset($_POST["checkout"])) {
-	if ($user->isAddressInfoComplete()){
+	if ($user->isAddressInfoComplete()){		
 		// Process checkout
-		if ($user->cartCheckout()) {
+		$error = array();
+		if ($user->cartCheckout($_POST)) {
 			gotoPage("dashboard.php");
 		}
 	} else {
