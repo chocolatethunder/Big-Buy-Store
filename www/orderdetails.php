@@ -64,13 +64,13 @@ include ("inc/header.inc.php");
 				
 				foreach ($order as $item) {
 					
-					$p = new product ($db, $item["contains"]);
+					$p = product::getProductData($item["contains"]);
 					
 					$subTotal += $item["totalunitprice"];
 					
 					echo "<tr>";
 					
-					echo 	"<td id = \"pname\" data-title=\"Product\">".$p->getTitle()."</a></td>";
+					echo 	"<td id = \"pname\" data-title=\"Product\">".$p["pname"]."</a></td>";
 					echo 	"<td id = \"price\" data-title=\"Price\">".$item["unitprice"]."</td>";
 					echo 	"<td id = \"items\" data-title=\"Qty\">".$item["units"]."</td>";
 					echo	"<td id = \"price\" data-title=\"Total Price\">$".$item["totalunitprice"]."</td>";

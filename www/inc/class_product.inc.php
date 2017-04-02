@@ -75,6 +75,12 @@ class product {
 		return false;
 	}
 	
+	public static function getProductData($pid) {
+		global $db;
+		$product = $db->select("MasterDB.PRODUCT", array("pid" => prep($pid, "n")));
+		return $product;
+	}
+	
 }
 
 ?>

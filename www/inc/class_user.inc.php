@@ -194,7 +194,7 @@ class user {
 			$i = new Product($this->dbo, $item);
 			if ($i->isOpen()) {
 				// insert rows for each item and their price into the orderitems table
-				$querysuccess["orderitem".$item] = $this->dbo->insert($this->dbn."ORDERITEMS", array("orderid" => $orderid, "contains" => $item, "unitprice" => $i->getPrice(), "units" => prep($post[$item], "n"), "totalunitprice" => ($i->getPrice() * prep($post[$item], "n")), "seller" => $i->getSellerId()));
+				$querysuccess["orderitem".$item] = $this->dbo->insert($this->dbn."ORDERITEMS", array("orderid" => $orderid, "contains" => $i->getProdId(), "unitprice" => $i->getPrice(), "units" => prep($post[$item], "n"), "totalunitprice" => ($i->getPrice() * prep($post[$item], "n")), "seller" => $i->getSellerId()));
 				// subtract the bought amount from the sellers inventory
 				$querysuccess["subtractitem".$item] = $i->subtractQty(prep($post[$item], "n"));
 			}
