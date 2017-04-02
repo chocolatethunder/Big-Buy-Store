@@ -34,7 +34,7 @@ class registration {
 		$this->email		= $email;
 		$this->terms		= $terms;
 		
-		$this->dtime		= $date = date("Y-m-d H:i:s");
+		$this->dtime		= date("Y-m-d H:i:s");
 		$this->dbn			= Conf::DBNAME.".";
 	}
 	
