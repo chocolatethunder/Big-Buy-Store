@@ -55,7 +55,7 @@ include ("inc/header.inc.php");
 					
 					echo "<tr>";
 					
-					echo 	"<td id = \"invoice\" data-title=\"Invoice\"><a href = \"addproduct.php?action=edit&id=".$order["oid"]."\">".$order["invoiceid"]."</a></td>";
+					echo 	"<td id = \"invoice\" data-title=\"Invoice\"><a href = \"#id=".$order["oid"]."\">".$order["invoiceid"]."</a></td>";
 					
 					echo 	"<td id = \"orderplaced\" data-title=\"Placed\">".toDate($order["orderDate"])."</td>";
 					
