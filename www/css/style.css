@@ -839,6 +839,19 @@ select::-ms-expand {
 	text-align:center;
 }
 
+#listings td#subtotal {
+	padding-right:20px;
+	text-align:right;
+	font-family:"robotobold";
+	background-color:#F3F3F3;
+}
+
+#listings td#subtotalval {
+	padding-left:20px;
+	text-align:left;
+	font-family:"robotobold";
+	background-color:#F3F3F3;
+}
 
 /* remove edit buttons */
 
