@@ -4,8 +4,22 @@
 $file = "home";
 include ("inc/classload.inc.php");
 
+$where = NULL;
+$listings = array();
+
 // Get all the products
-$listings = $db->joinselect("MasterDB."."LISTS", array(array("LISTS" => "listedProd", "PRODUCT" => "pid"), array("PRODUCT" => "department", "DEPARTMENT" => "deptid")), NULL, NULL, "*", FALSE, FALSE);
+if (isset($_POST["gosearch"])) {	
+	if (preg_match("/^[a-zA-Z0-9 ]+$/", $_POST["search"])) {
+		$sql = "SELECT * FROM `MasterDB`.`LISTS` JOIN `PRODUCT` ON `LISTS`.`listedProd` = `PRODUCT`.`pid` JOIN `DEPARTMENT` ON `PRODUCT`.`department` = `DEPARTMENT`.`deptid` WHERE `description` LIKE :sel_description OR `pname` LIKE :sel_pname";
+		$bind = array();
+		$bind[":sel_description"] = "%".$_POST["search"]."%";
+		$bind[":sel_pname"] = "%".$_POST["search"]."%";
+		$listings[] = $db->runquery($sql,$bind);		
+	}
+} else {
+	$listings = $db->joinselect("MasterDB."."LISTS", array(array("LISTS" => "listedProd", "PRODUCT" => "pid"), array("PRODUCT" => "department", "DEPARTMENT" => "deptid")), NULL, NULL, "*", FALSE, FALSE);
+}
+
 
 // Include header template
 include ("inc/header.inc.php");

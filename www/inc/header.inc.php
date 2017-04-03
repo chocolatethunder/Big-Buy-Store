@@ -60,7 +60,7 @@
 			
 			<div id = "searchlabel">SEARCH</div>
 			
-			<form action="search.php" method="post" id="searchform">  
+			<form action="index.php" method="post" id="searchform">  
 
 				<input type="hidden" name="token" value="<?php echo generateToken(30); ?>" />
 				<input type="hidden" name="form" value="search" />
@@ -70,7 +70,7 @@
 				value = "<?php echo (isset($_POST["search"]) ? cleanDisplay($_POST["search"]) : null); ?>" />
 				<?php echo (isset($error["search"]) ? "<p class = \"inputerror\">".$error["search"]."</p>" : null); ?>
 				
-				<input type="submit" name="search" value="Go" id="submit" />
+				<input type="submit" name="gosearch" value="Go" id="submit" />
 
 			</form>			
 		
