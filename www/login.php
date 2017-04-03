@@ -59,7 +59,7 @@ include ("inc/header.inc.php");
 		style = "<?php echo (isset($error["pass"]) ? "border:2px solid red;" : null); ?>" 
 		value = "<?php echo (isset($_POST["pass"]) ? cleanDisplay($_POST["pass"]) : null); ?>" />
 		<?php echo (isset($error["pass"]) ? "<p class = \"inputerror\">".$error["pass"]."</p>" : null); ?>
-		<p class="microlabel"><a href ="flare.php?recover=password">I forgot my password</a></p>
+		<!--<p class="microlabel"><a href ="flare.php?recover=password">I forgot my password</a></p>-->
 		
 		<input type="submit" name="login" value="Login" id="submit" />
 		
