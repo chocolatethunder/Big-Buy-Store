@@ -234,4 +234,41 @@ class seller extends user {
 		return null;
 	}
 	
+	public function getOrders($open=TRUE) {
+		
+		$where = array();
+		$where["seller"] = $this->getuid();
+		$where["shipped"] = ($open ? "N" : "Y");
+		
+		$join = array();
+		$join[] = array("ORDERITEMS" => "orderid", "ORDERS" => "oid");		
+		
+		$orderdata = $this->dbo->joinselect($this->dbn."ORDERITEMS", $join, $where, NULL, "*", FALSE, FALSE);
+		
+		return $orderdata;
+	}
+	
+	public function shiporder($ordernum, $productnum, $tracknum) {
+		
+		global $error;
+		
+		$oid = prep($ordernum, "n");
+		$pid = prep($productnum, "n");
+		$tid = prep($tracknum, "an");
+		
+		if (isset($tid) && !empty($tid)) {
+			
+			if ($this->dbo->update($this->dbn."ORDERITEMS", array("trackingno" => strtoupper($tid), "shipped" => "Y"), array("orderid" => $oid, "contains" => $pid))) {
+				return true;
+			}
+			
+		} else {
+			$error["trackno_".$oid.$pid] = "Tracking number cannot be empty.";
+		}
+		
+		return false;
+		
+	}
+	
+	
 }

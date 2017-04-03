@@ -44,7 +44,7 @@ include ("inc/header.inc.php");
 				errorhandler();
 				
 			?>
-				<div id = "divlabel"><?php echo "Invoice #: ".$order[0]["invoiceid"]; ?></div>
+				<div id = "divlabel"><?php echo "Invoice #: ".$order[0]["invoiceid"]."<br/>"; echo "Placed on: ".toDate($order[0]["orderDate"]); ?></div>
 				
 				<table id="listings">
 						<thead>
@@ -61,12 +61,14 @@ include ("inc/header.inc.php");
 			<?php
 			
 				$subTotal = 0;				
+				$shipped = array();
 				
 				foreach ($order as $item) {
 					
 					$p = product::getProductData($item["contains"]);
 					
 					$subTotal += $item["totalunitprice"];
+					$shipped[] = ($item["shipped"] == "Y" ? true : false);
 					
 					echo "<tr>";
 					
@@ -95,7 +97,15 @@ include ("inc/header.inc.php");
 				
 				<br/><br/>
 				
-				<div id = "divlabel">Shipped to</div>
+				<?php 
+				
+				if (in_array(false, $shipped, true)) {
+					echo "<div id = \"divlabel\">Will ship to</div>";
+				} else {
+					echo "<div id = \"divlabel\">Shipped to</div>";					
+				}
+				
+				?>				
 				
 				<br/>
 				

@@ -564,7 +564,7 @@ input[type="submit"] {
 	outline:2px solid #03A89E;
 }
 
-#contentform  #submit, #contentform  #cancel, #contentform  #misc, #contentform #make {
+#contentform  #submit, #contentform  #cancel, #contentform  #misc, #contentform #make, #contentform #ship {
 	font-family:"robotomedium";
 	background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3); /* For Safari 5.1 to 6.0 */
 	background: -o-linear-gradient(top, #f9f9f9, #e3e3e3); /* For Opera 11.1 to 12.0 */
@@ -591,6 +591,12 @@ input[type="submit"] {
 #contentform  #misc {
 	width:125px;
 	margin:15px 0 0 15px;
+}
+
+#contentform  #ship {
+	width:80px;
+	margin:0 70px 0 15px;
+	float:right;
 }
 
 #contentform #submit:hover, #contentform #cancel:hover, #contentform  #misc:hover, #contentform #make:hover  {

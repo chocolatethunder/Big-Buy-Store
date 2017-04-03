@@ -356,6 +356,7 @@ function dashnav ($acc) {
 	$user["password.php"] 	= "Change Password";
 	
 	$seller["pendingorders.php"] 	= "Pending Orders";
+	$seller["sellerhistory.php"] 	= "Fulfilled Orders";
 	$seller["listings.php"] 		= "Listings";
 	$seller["addproduct.php"] 		= "Add Product";
 	
