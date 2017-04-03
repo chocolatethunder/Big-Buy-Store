@@ -154,7 +154,7 @@ class pdodb {
 		
 	}
 	
-	public function joinselect($table, $join=NULL, $where=NULL, $cond=NULL, $col="*", $lock=FALSE, $single=TRUE) {		
+	public function joinselect($table, $join=NULL, $where=NULL, $cond=NULL, $col="*", $lock=FALSE, $single=TRUE, $verbose=FALSE) {		
 		
 		$i			= 0;
 		$prefix 	= "sel_";
@@ -189,7 +189,12 @@ class pdodb {
 		$sql .= ($cond != NULL ? " ".implode(" ",$cond) : NULL);
 		// Add rowlock
 		$sql .= ($lock == TRUE ? " FOR UPDATE" : NULL);
-
+	
+		if ($verbose) {
+			echo $sql;
+			debugarray($bind);
+		}
+		
 		// Run the query
 		$result = $this->go($sql, $bind, $single);		
 		if ($result !== NULL && $result !== FALSE) {
