@@ -14,7 +14,7 @@ if (isset($_POST["gosearch"])) {
 		$bind = array();
 		$bind[":sel_description"] = "%".$_POST["search"]."%";
 		$bind[":sel_pname"] = "%".$_POST["search"]."%";
-		$listings[] = $db->runquery($sql,$bind);		
+		$listings[] = $db->runquery($sql,$bind);
 	}
 } else {
 	$listings = $db->joinselect("MasterDB."."LISTS", array(array("LISTS" => "listedProd", "PRODUCT" => "pid"), array("PRODUCT" => "department", "DEPARTMENT" => "deptid")), NULL, NULL, "*", FALSE, FALSE);
