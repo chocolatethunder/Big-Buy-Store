@@ -143,16 +143,13 @@ class registration {
 			$_SESSION["uid"] = $newuserid; // This is so that send verification email can log the userid
 			
 			// Second query
-			$useraddr_data = array("addrid" => $newuserid);
-			$querysuccess["user_addr"] = $this->dbo->insert($this->dbn."ADDRESS",$useraddr_data );
+			$querysuccess["user_addr"] = $this->dbo->insert($this->dbn."ADDRESS", array("residenceOf" => $newuserid));
 
-			// Third query
-			$userauth_data = array("uid" => $newuserid, "lvl" => 1, "address" => $newuserid, "emailCode" => $this->emailCode);			
-			$querysuccess["user_auth"] = $this->dbo->insert($this->dbn."USERINFO", $userauth_data);
+			// Third query			
+			$querysuccess["user_auth"] = $this->dbo->insert($this->dbn."USERINFO", array("uid" => $newuserid, "lvl" => 1, "emailCode" => $this->emailCode));
 
 			// Fourth Query
-			$usercart_data = array("belongsto" => $newuserid);
-			$querysuccess["user_cart"] = $this->dbo->insert($this->dbn."SHOPPINGCART", $usercart_data);			
+			$querysuccess["user_cart"] = $this->dbo->insert($this->dbn."SHOPPINGCART", array("belongsto" => $newuserid));			
 			
 			
 			if (!in_array(false, array_values($querysuccess), true) == true) {				

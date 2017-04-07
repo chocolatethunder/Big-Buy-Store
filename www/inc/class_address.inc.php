@@ -298,7 +298,7 @@ class address extends user {
 			$this->dbo->start();
 			
 			$qstatus["updatename"] = $this->dbo->update($this->dbn."USERINFO", $namedata, array("uid" => $this->getuid()));
-			$qstatus["updateaddr"] = $this->dbo->update($this->dbn."ADDRESS", $data, array("addrid" => $this->getUserData("address")));
+			$qstatus["updateaddr"] = $this->dbo->update($this->dbn."ADDRESS", $data, array("residenceOf" => $this->getuid()));
 			
 			if (!in_array(false, array_values($qstatus), true) == true) {
 				$this->dbo->end();
