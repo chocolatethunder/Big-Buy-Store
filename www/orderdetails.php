@@ -113,8 +113,7 @@ include ("inc/header.inc.php");
 		
 					<?php
 					
-					echo $user->getUserFullNameString();
-					echo $user->getUserAddressString();
+					echo $user->getOrderAddress($order[0]["oid"]);
 					
 					?>
 					

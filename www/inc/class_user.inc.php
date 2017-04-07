@@ -271,6 +271,21 @@ class user {
 		
 	}
 	
+	public function getOrderAddress($orderid) {
+		
+		$orderData = $this->getOrderData($orderid);
+		
+		$addressData = $this->dbo->joinselect($this->dbn."USERS", 
+						array(	array("USERS" => "id", "USERINFO" => "uid"), 
+								array("USERS" => "id", "ADDRESS" => "residenceOf")),
+						array("id" => $orderData[0]["shippedTo"]));
+						
+		$info = $addressData["fname"]." ".$addressData["lname"]."<br/>".$addressData["street"].", ".$addressData["unit"]."<br/>".$addressData["city"].", ".$addressData["province"]."<br/>".$addressData["country"]."<br/>".$addressData["phone"];
+		
+		return $info;
+		
+	}
+	
 }
 
 ?>
