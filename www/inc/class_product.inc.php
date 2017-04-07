@@ -68,6 +68,10 @@ class product {
 		return $this->listId;
 	}
 	
+	public function getDeptId() {
+		return $this->listingData["department"];
+	}
+	
 	public function subtractQty($qty=1) {
 		if ($this->dbo->update($this->dbn."LISTS", array("units" => $this->getQuantity()-$qty), array("adId" => $this->getListingId()))) {
 			return true;
