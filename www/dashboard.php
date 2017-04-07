@@ -61,7 +61,7 @@ include ("inc/header.inc.php");
 					
 					echo 	"<td id = \"items\" data-title=\"Items\">".$order["count"]."</td>";
 					echo	"<td id = \"total\" data-title=\"Total\">$".$order["total"]."</td>";
-					echo	"<td id = \"orderstatus\" data-title=\"Status\">".$order["ordstatus"]."</td>";
+					echo	"<td id = \"orderstatus\" data-title=\"Status\">".$user->getOrderStatus($order["oid"])."</td>";
 
 					echo "</tr>";
 					

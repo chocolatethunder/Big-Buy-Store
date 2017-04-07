@@ -17,7 +17,7 @@ class user {
 		// load all the data
 		$this->udata = $this->dbo->joinselect($this->dbn."USERS", 
 						array(	array("USERS" => "id", "USERINFO" => "uid"), 
-								array("USERINFO" => "address", "ADDRESS" => "addrid")),
+								array("USERS" => "id", "ADDRESS" => "residenceOf")),
 						array("id" => $this->uid));
 
 	}
@@ -184,7 +184,7 @@ class user {
 		$this->dbo->start();
 		
 		// insert a new row in the orders table
-		$querysuccess["orderinsert"] = $this->dbo->insert($this->dbn."ORDERS", array("uid" => $this->getuid(), "invoiceid" => randomNumber(6), "orderDate" => date("Y-m-d H:i:s"), "shipAddr" => $this->getUserData("address"), "ordstatus" => "Placed"));
+		$querysuccess["orderinsert"] = $this->dbo->insert($this->dbn."ORDERS", array("shippedTo" => $this->getuid(), "invoiceid" => randomNumber(6), "orderDate" => date("Y-m-d H:i:s"), "ordstatus" => "Placed"));
 		
 		// get the last insert id
 		$orderid = $this->dbo->lastinsertid;
@@ -215,14 +215,14 @@ class user {
 	
 	public function getOrders() {
 		
-		$orderdata = $this->dbo->select($this->dbn."ORDERS", array("uid" => $this->getuid()), NULL, "*", FALSE, FALSE);
+		$orderdata = $this->dbo->select($this->dbn."ORDERS", array("shippedTo" => $this->getuid()), NULL, "*", FALSE, FALSE);
 		
 		if (!empty($orderdata)) {
 			$i = 0;		
 			foreach ($orderdata as $ord) {
-				$orderTotal = $this->dbo->select($this->dbn."ORDERITEMS", array("orderid" => $ord["oid"]), NULL, "SUM(totalunitprice), COUNT(*)");
+				$orderTotal = $this->dbo->select($this->dbn."ORDERITEMS", array("orderid" => $ord["oid"]), NULL, "SUM(totalunitprice), SUM(units)");
 				$orderdata[$i]["total"] = $orderTotal["SUM(totalunitprice)"];
-				$orderdata[$i]["count"] = $orderTotal["COUNT(*)"];
+				$orderdata[$i]["count"] = $orderTotal["SUM(units)"];
 				$i++;
 			}			
 			return $orderdata;
@@ -245,13 +245,30 @@ class user {
 	public function isUsersOrder($orderid) {
 		
 		$oid = prep($orderid,"n");
-		$asUser = $this->dbo->select($this->dbn."ORDERS", array("uid" => $this->getuid(), "oid" => $oid), NULL, "*", FALSE, FALSE);
+		$asUser = $this->dbo->select($this->dbn."ORDERS", array("shippedTo" => $this->getuid(), "oid" => $oid), NULL, "*", FALSE, FALSE);
 		$asSeller = $this->dbo->select($this->dbn."ORDERITEMS", array("orderid" => $oid, "seller" => $this->getuid()), NULL, "*", FALSE, FALSE);
 		
 		if (!empty($asUser) || !empty($asSeller)) {
 			return true;
 		}
 		return false;
+	}
+	
+	public function getOrderStatus($orderid) {
+		
+		$orderData = $this->getOrderData($orderid);
+		$shipped = array();
+		
+		foreach ($orderData as $item) {
+			$shipped[] = ($item["shipped"] == "Y" ? true : false);
+		}
+		
+		if (!in_array(false, $shipped, true)) {
+			return "Shipped";
+		}
+		
+		return "Placed";
+		
 	}
 	
 }
