@@ -62,6 +62,25 @@ include ("inc/header.inc.php");
 	<div id = "productwindow">	
 		
 		<div id = "divlabel">Products that may interest you</div>
+		
+		<?php
+		
+		$suggestions = $db->joinselect("MasterDB.LISTS", array(array("LISTS" => "listedProd", "PRODUCT" => "pid"), array("PRODUCT" => "department", "DEPARTMENT" => "deptid")), array("department" => $prod->getDeptId()), array("LIMIT 3"), "*", FALSE, FALSE);
+		
+		foreach ($suggestions as $item) {
+				
+			echo "<a id = \"productlink\" href = \"product.php?id=".$item["adId"]."\"><div id = \"tile\">";
+			
+				echo "<div id = \"prodimage\"></div>";
+				echo "<div id = \"prodtitle\"><p>".truncatestr($item["pname"], 18)."</p></div>";
+				echo "<div id = \"proddesp\"><p>".truncatestr($item["description"], 78)."</p></div>";
+				echo "<div id = \"prodprice\"><p>$".$item["price"]."</p></div>";
+			
+			echo "</div></a>";
+			
+		}
+		
+		?>
 	
 	</div>
 	
