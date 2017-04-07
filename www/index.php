@@ -4,8 +4,7 @@
 $file = "home";
 include ("inc/classload.inc.php");
 
-$where = NULL;
-$listings = array();
+$listings = $db->joinselect("MasterDB."."LISTS", array(array("LISTS" => "listedProd", "PRODUCT" => "pid"), array("PRODUCT" => "department", "DEPARTMENT" => "deptid")), NULL, NULL, "*", FALSE, FALSE);
 
 // Get all the products
 if (isset($_POST["gosearch"])) {	
@@ -14,10 +13,15 @@ if (isset($_POST["gosearch"])) {
 		$bind = array();
 		$bind[":sel_description"] = "%".$_POST["search"]."%";
 		$bind[":sel_pname"] = "%".$_POST["search"]."%";
-		$listings[] = $db->runquery($sql,$bind);
+		$temp = $db->runquery($sql,$bind);
+		if (!empty($temp)) {
+			unset($listings);
+			$listings[] = $temp;
+			$_SESSION["success"] = "The search returned ".count($listings)." ".(count($listings) > 1 ? "results" : "result").".";
+		} else {
+			$_SESSION["caution"] = "The search returned 0 results.";
+		}
 	}
-} else {
-	$listings = $db->joinselect("MasterDB."."LISTS", array(array("LISTS" => "listedProd", "PRODUCT" => "pid"), array("PRODUCT" => "department", "DEPARTMENT" => "deptid")), NULL, NULL, "*", FALSE, FALSE);
 }
 
 
@@ -31,7 +35,7 @@ include ("inc/header.inc.php");
 	
 	<div id = "resultswindow">	
 		
-		<?php 
+		<?php errorhandler();
 			
 			foreach ($listings as $item) {
 				
