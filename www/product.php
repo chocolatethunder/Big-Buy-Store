@@ -32,12 +32,12 @@ include ("inc/header.inc.php");
 		if ($prod->getQuantity() > 0) {
 			
 			echo "<a href =\"cart.php?action=add&id=".$prod->getListingId()."\"><div id = \"addToCart\">Add to cart</div></a>";
-			echo "<a href =\"review.php?type=product&id=".$prod->getProdId()."\"><div id = \"prodRating\">".$pr->printStars()."</div></a>";
-			
+
 		} else {
 			echo "<div id = \"soldOut\">Sold out</div>";
 		}
 		
+		echo "<a href =\"review.php?type=product&id=".$prod->getProdId()."\"><div id = \"prodRating\">".$pr->printStars()."</div></a>";
 		
 		echo "<div id = \"listTitle\"><p>".$prod->getTitle()."</p></div>";
 		
@@ -67,6 +67,30 @@ include ("inc/header.inc.php");
 	<div id = "productwindow">	
 		
 		<div id = "divlabel">Reviews</div>
+		
+		<?php
+		
+		$r = new review($db, "product", $prod->getProdId());
+		$reviews = $r->getSellerReviews();
+		
+		if (count($reviews) > 0) {
+		
+			foreach($reviews as $rev) {		
+			
+				echo "<div id =\"reviewer\">".$rev["uname"]."</div>";
+				echo "<div id =\"stars\">".$r->printStarsFromNum($rev["rating"])."</div>";
+				echo "<div id =\"reviewtext\">".$rev["review"]."</div>";
+				echo "<hr class = \"separator\">";
+				
+			}
+			
+		} else {
+			
+			echo "<div id =\"reviewer\">This product does not have any reviews yet.</div>";
+			
+		}
+		
+		?>
 	
 	</div>
 	
