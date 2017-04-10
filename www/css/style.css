@@ -935,7 +935,7 @@ select::-ms-expand {
 	font-size:15px;
 	font-family:"robotoregular";
 	padding:0;
-	margin:5px 0 0 0;	
+	margin:5px 0 0 0;
 }
 
 #addToCart {
@@ -954,6 +954,11 @@ select::-ms-expand {
 #addToCart:hover {
 	background-color:#FFFFFF;
 	color:#03A89E;
+}
+
+#prodRating {
+	float:right;
+	margin:10px 15px 0 0;
 }
 
 #soldOut {
@@ -1112,5 +1117,121 @@ select::-ms-expand {
 	margin:-30px 0 15px 222px;
 	font-family:'robotobold';
 	font-size:16px;
+}
+
+/* review page */
+
+#item-title {
+	font-family:'robotobold';
+	font-size:32px;
+}
+
+#reviewer {
+	font-family:'robotoitalic';
+	font-size:16px;
+	margin:6px 0 3px 0;
+}
+
+#stars {
+	margin:3px 0;
+}
+
+#reviewtext {
+	font-family:'robotoregular';
+	font-size:14px;
+	margin:3px 0;
+}
+
+
+hr.separator {
+	border-top: 1px solid #D3D3D3;
+	border-bottom: 1px solid #fff;
+}
+
+.star-lit {
+	margin:0;
+	padding:0;
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	background: url('../img/star.png') 0 0;
+}
+
+.star-dull {
+	margin:0;
+	padding:0;
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	background: url('../img/star.png') 0 -16px;
+}
+
+
+
+
+.rating {
+    overflow: hidden;
+    display: inline-block;
+    font-size: 0;
+    position: relative;
+}
+.rating-input {
+    float: right;
+    width: 16px;
+    height: 16px;
+    padding: 0;
+    margin: 0 0 0 -16px;
+    opacity: 0;
+}
+.rating:hover .rating-star:hover,
+.rating:hover .rating-star:hover ~ .rating-star,
+.rating-input:checked ~ .rating-star {
+    background-position: 0 0;
+}
+.rating-star,
+.rating:hover .rating-star {
+    position: relative;
+    float: right;
+    display: block;
+    width: 16px;
+    height: 16px;
+    background: url('../img/star.png') 0 -16px;
+}
+
+#submit {
+	font-family:"robotomedium";
+	background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(top, #f9f9f9, #e3e3e3); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(top, #f9f9f9, #e3e3e3); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(top, #f9f9f9, #e3e3e3);
+	background-image: -ms-linear-gradient(top, #f9f9f9 0%, #e3e3e3 100%);
+	border:1px solid #999999;
+	color:#2d3235;
+	box-shadow:none;	
+	border-radius:5px;
+	outline:none;
+}
+
+#submit {
+	width:100px;
+	padding:7px;
+	margin:15px 0 0 0;
+}
+
+#txtArea {
+	width:775px;
+	height:100px;
+	background-color:#FFFFFF;
+	border:none;
+	padding:0 7px;
+	border:2px solid #FFFFFF;	
+	font-family:"robotoregular";
+	font-size:16px;
+	color:#2d3235;	
+	box-shadow:inset 0px 1px 4px #999999;
+}
+
+#txtArea:focus {
+	outline:2px solid #03A89E;
 }
 

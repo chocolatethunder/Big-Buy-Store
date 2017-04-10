@@ -8,7 +8,9 @@ if (isset($_GET["id"]) && !empty($_GET["id"])) {
 	$prod = new product($db, $_GET["id"]);	
 	if (!$prod->isOpen()) {
 		gotoPage("index.php");
-	}	
+	}
+	$rr = new review($db, "seller", $prod->getSellerId());
+	$pr = new review($db, "product", $prod->getProdId());
 } else {
 	gotoPage("index.php");
 }
@@ -28,7 +30,10 @@ include ("inc/header.inc.php");
 		echo "<div id = \"listImg\"><img src = \"img/default.png\" /></div>";
 		
 		if ($prod->getQuantity() > 0) {
+			
 			echo "<a href =\"cart.php?action=add&id=".$prod->getListingId()."\"><div id = \"addToCart\">Add to cart</div></a>";
+			echo "<a href =\"review.php?type=product&id=".$prod->getProdId()."\"><div id = \"prodRating\">".$pr->printStars()."</div></a>";
+			
 		} else {
 			echo "<div id = \"soldOut\">Sold out</div>";
 		}
@@ -38,7 +43,15 @@ include ("inc/header.inc.php");
 		
 		
 		echo "<div id = \"listPrice\"><p>$".$prod->getPrice()."</p></div>";
-		echo "<div id = \"listDetail\"><span class = \"prefix\">Sold by: </span><span class = \"suffix\"> ".$prod->getSeller()."</span></div>";
+		echo "<div id = \"listDetail\">
+					<span class = \"prefix\">
+						Sold by: 
+					</span>
+					<span class = \"suffix\"> 
+						".$prod->getSeller()."&nbsp;
+						<a href = \"review.php?type=seller&id=".$prod->getSellerId()."\">".$rr->printStars()."</a>
+					</span>				
+			  </div>";
 		echo "<div id = \"listDetail\"><span class = \"prefix\">Listed on: </span><span class = \"suffix\"> ".toDate($prod->getlistingDate(), true)."</span></div>";
 		echo "<div id = \"listDetail\"><span class = \"prefix\">Units Left: </span><span class = \"suffix\"> ".($prod->getQuantity() <= 0 ? "Sold Out" : $prod->getQuantity())."</span></div>";
 		

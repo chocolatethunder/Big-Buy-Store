@@ -1,9 +1,5 @@
 <?php
 
-// SELECT * FROM `PRODREVIEWS` LEFT JOIN `ORDERITEMS` ON `PRODREVIEWS`.`product` = `ORDERITEMS`.`contains` JOIN `ORDERS` ON `ORDERITEMS`.`orderid` = `ORDERS`.`oid`;
-
-// IF reviewer == uid then verified owner
-
 class product {
 	
 	private $dbo;

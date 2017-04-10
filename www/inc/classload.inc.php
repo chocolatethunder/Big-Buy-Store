@@ -11,6 +11,7 @@ include ("inc/class_login.inc.php");
 include ("inc/class_registration.inc.php");
 include ("inc/class_formsecurity.inc.php");
 include ("inc/class_product.inc.php");
+include ("inc/class_review.inc.php");
 
 $db 			= new pdodb(Conf::DBNAME);
 $securityCheck 	= new security();
@@ -25,7 +26,7 @@ if (login::loginCheck() == true) {
 
 // Allowed public places
 
-$publicpages = array ("login","signup","search","home","product");
+$publicpages = array ("login","signup","search","home","product","review");
 
 // Auto logout if it is not a private page and user is not logged in.
 
