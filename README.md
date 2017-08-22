@@ -21,7 +21,7 @@ The main goal of this project was to understand how to design and implement a re
 
 ![eer](https://user-images.githubusercontent.com/5299394/29581245-f130c6c6-8735-11e7-989a-eb1ba1a1d472.png)
 
-The database was then created on the Amazon RDS platform with the help of both PHPMyAdmin and MySQL connect via terminal. In order to demonstrate its functionality a nice and simple front end was created to help interact with the database. It is worth nothing that this was not a Web Systems class but a backend Database design class therefore more emphasis was put on the design of the database rather than the design of the front end. It was still fully functional and had full OWASP protection coverage.
+The database was then created on the Amazon RDS platform with the help of both PHPMyAdmin and MySQL connect via terminal. In order to demonstrate its functionality a nice and simple front end was created to help interact with the database. It is worth nothing that this was not a Web Systems class but a backend Database design class therefore more emphasis was put on the design of the database rather than the design of the front end. It was still fully functional and had full OWASP rules implemented.
 
 The platform was intentionally designed to serve three types of users - seller, buyers, and moderators(employees). The users could login and signup as base buyer users and could apply to upgrade their status to sellers which was controlled by the moderators on the platform.
 
@@ -53,10 +53,21 @@ Each product had its own product page along with a fully functional product and 
 
 Additional menu items available for **buyers** included the ability to view their placed orders, update their address information, and change their password.
 
+![bb11](https://user-images.githubusercontent.com/5299394/29582680-da8b0864-873a-11e7-991e-db366bfb8d76.png)
 
+![bb12](https://user-images.githubusercontent.com/5299394/29582679-da895cb2-873a-11e7-976d-0847e120916a.png)
+
+![bb13](https://user-images.githubusercontent.com/5299394/29582681-da8be68a-873a-11e7-8216-4c6ab5c7578c.png)
 
 Additional menu items available for **sellers** included view pending orders, view completed orders, add a new product listing, and edit current product listings.
 
+![bb15](https://user-images.githubusercontent.com/5299394/29582825-61f93e2e-873b-11e7-91e8-4d187adfc4d5.png)
+
+![bb16](https://user-images.githubusercontent.com/5299394/29582828-61fa77d0-873b-11e7-9817-d0b676a464d0.png)
+
+![bb17](https://user-images.githubusercontent.com/5299394/29582827-61fa2df2-873b-11e7-91a1-43890fec373c.png)
+
+![bb18](https://user-images.githubusercontent.com/5299394/29582829-61fac47e-873b-11e7-8a92-cefdfdb67a17.png)
 
 Additional menu items available for **moderators** included the ability to add a new department, and approve/deny applications
 
