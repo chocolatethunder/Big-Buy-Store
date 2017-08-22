@@ -29,16 +29,15 @@ The platform was intentionally designed to serve three types of users - seller, 
 
 ![bb2](https://user-images.githubusercontent.com/5299394/29581697-6b32c770-8737-11e7-9989-fbb76e09e1fc.png)
 
+Menu items would become available with increasing level of access. 
+
+![bb9](https://user-images.githubusercontent.com/5299394/29582420-dedc9f0a-8739-11e7-9f3c-6406db7f4c75.png)
+
 Special menu available to moderators to approve applications
 
 ![bb3](https://user-images.githubusercontent.com/5299394/29581699-6b37d4fe-8737-11e7-8d30-b103037b4644.png)
 
 ![bb4](https://user-images.githubusercontent.com/5299394/29581700-6b3a0076-8737-11e7-8466-17b67a380a9d.png)
-
-Both registered and non registered users could search for items on the main page using the search bar which used SQL's LIKE function to find relevant products. This is what the front page of the website looked like. It had all the products listed. 
-
-![bb5](https://user-images.githubusercontent.com/5299394/29581993-53ccaf0a-8738-11e7-90a4-03978a4bf200.png)
-
 
 Both registered and non registered users could search for items on the main page using the search bar which used SQL's LIKE function to find relevant products. This is what the front page of the website looked like. It had all the products listed. 
 
@@ -52,6 +51,17 @@ Each product had its own product page along with a fully functional product and 
 
 ![bb8](https://user-images.githubusercontent.com/5299394/29582137-cb1927d2-8738-11e7-8fdd-87f106d1a737.png)
 
+Additional menu items available for **buyers** included the ability to view their placed orders, update their address information, and change their password.
 
+
+
+Additional menu items available for **sellers** included view pending orders, view completed orders, add a new product listing, and edit current product listings.
+
+
+Additional menu items available for **moderators** included the ability to add a new department, and approve/deny applications
+
+![bb10](https://user-images.githubusercontent.com/5299394/29582525-3f49cb9c-873a-11e7-922b-32375f4631d4.png)
+
+![bb4](https://user-images.githubusercontent.com/5299394/29581700-6b3a0076-8737-11e7-8466-17b67a380a9d.png)
 
 
