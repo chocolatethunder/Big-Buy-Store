@@ -9,6 +9,7 @@
 - WAMP Stack
 - Microsoft Visio
 - Adobe Illustrator
+- Git/Github
 
 **Methodologies**
 - Used EER model to design relational database schema
@@ -18,6 +19,7 @@
 - Use Microsoft Visio to design the database model
 - Implement OWASP rules to guard against malicious data
 - Design rich icons and logos in Adobe Illustrator to enhance the front end look
+- Use Git/Github as version control and collaboration tool
 
 The main goal of this project was to understand how to design and implement a relational database. Creating a marketplace provided the opportunity to show and explore various types of SQL operations. First an EER Model was created. 
 
