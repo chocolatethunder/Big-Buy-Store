@@ -25,7 +25,7 @@ The main goal of this project was to understand how to design and implement a re
 
 The database was then created on the Amazon RDS platform with the help of both PHPMyAdmin and MySQL connect via terminal. In order to demonstrate its functionality a nice and simple front end was created to help interact with the database. It is worth nothing that this was not a Web Systems class but a backend Database design class therefore more emphasis was put on the design of the database rather than the design of the front end. It was still fully functional and had full OWASP rules implemented. Icons were designed from scratch and the company logo was also designed from scratch even though it was not required. 
 
-![artboard 1](https://user-images.githubusercontent.com/5299394/29583425-52f62cbe-873d-11e7-981c-c1cc477fc265.png)
+![artboard 1 4x](https://user-images.githubusercontent.com/5299394/29583457-6b0ddaae-873d-11e7-971a-a12d27ba8031.png)
 
 The platform was intentionally designed to serve three types of users - seller, buyers, and moderators(employees). The users could login and signup as base buyer users and could apply to upgrade their status to sellers which was controlled by the moderators on the platform.
 
