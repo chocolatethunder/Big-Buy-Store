@@ -8,6 +8,7 @@
 - MySQL
 - WAMP Stack
 - Microsoft Visio
+- Adobe Illustrator
 
 **Methodologies**
 - Used EER model to design relational database schema
@@ -16,12 +17,13 @@
 - Full Stack using WAMP platform
 - Use Microsoft Visio to design the database model
 - Implement OWASP rules to guard against malicious data
+- Design rich icons and logos in Adobe Illustrator to enhance the front end look
 
 The main goal of this project was to understand how to design and implement a relational database. Creating a marketplace provided the opportunity to show and explore various types of SQL operations. First an EER Model was created. 
 
 ![eer](https://user-images.githubusercontent.com/5299394/29581245-f130c6c6-8735-11e7-989a-eb1ba1a1d472.png)
 
-The database was then created on the Amazon RDS platform with the help of both PHPMyAdmin and MySQL connect via terminal. In order to demonstrate its functionality a nice and simple front end was created to help interact with the database. It is worth nothing that this was not a Web Systems class but a backend Database design class therefore more emphasis was put on the design of the database rather than the design of the front end. It was still fully functional and had full OWASP rules implemented.
+The database was then created on the Amazon RDS platform with the help of both PHPMyAdmin and MySQL connect via terminal. In order to demonstrate its functionality a nice and simple front end was created to help interact with the database. It is worth nothing that this was not a Web Systems class but a backend Database design class therefore more emphasis was put on the design of the database rather than the design of the front end. It was still fully functional and had full OWASP rules implemented. Icons were designed from scratch and the company logo was also designed from scratch even though it was not required. 
 
 The platform was intentionally designed to serve three types of users - seller, buyers, and moderators(employees). The users could login and signup as base buyer users and could apply to upgrade their status to sellers which was controlled by the moderators on the platform.
 
