@@ -47,11 +47,11 @@ Each product had its own product page along with a fully functional product and 
 
 ![bb6](https://user-images.githubusercontent.com/5299394/29582135-cb1364f0-8738-11e7-81ff-fce2c5882d3a.png)
 
-Product review page
+Product review page.
 
 ![bb7](https://user-images.githubusercontent.com/5299394/29582136-cb188a70-8738-11e7-8cc2-96d1511836e6.png)
 
-Seller review page
+Seller review page. *Note that the comment input box is missing because the seller viewing the review is the seller.*
 
 ![bb8](https://user-images.githubusercontent.com/5299394/29582137-cb1927d2-8738-11e7-8fdd-87f106d1a737.png)
 
