@@ -5,6 +5,8 @@
 **Technologies/Software:**
 - Amazon RDS
 - PHP
+- HTML
+- CSS
 - MySQL
 - WAMP Stack
 - Microsoft Visio
